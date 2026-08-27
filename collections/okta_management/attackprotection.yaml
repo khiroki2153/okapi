@@ -1,0 +1,35 @@
+---
+name: AttackProtection
+requests:
+- name: AttackProtection / Retrieve the authenticator settings
+  method: GET
+  url: "{{baseUrl}}/attack-protection/api/v1/authenticator-settings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AttackProtection / Replace the authenticator settings
+  method: PUT
+  url: "{{baseUrl}}/attack-protection/api/v1/authenticator-settings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content: {}
+- name: AttackProtection / Retrieve the user lockout settings
+  method: GET
+  url: "{{baseUrl}}/attack-protection/api/v1/user-lockout-settings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AttackProtection / Replace the user lockout settings
+  method: PUT
+  url: "{{baseUrl}}/attack-protection/api/v1/user-lockout-settings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content: {}

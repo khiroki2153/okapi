@@ -1,0 +1,22 @@
+---
+name: UserLinkedObject
+requests:
+- name: UserLinkedObject / Assign a linked object value for primary
+  method: PUT
+  url: "{{baseUrl}}/api/v1/users/{{userIdOrLogin}}/linkedObjects/{{primaryRelationshipName}}/{{primaryUserId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLinkedObject / List the primary or all of the associated linked object
+    values
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userIdOrLogin}}/linkedObjects/{{relationshipName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLinkedObject / Delete a linked object value
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/users/{{userIdOrLogin}}/linkedObjects/{{relationshipName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

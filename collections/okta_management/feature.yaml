@@ -1,0 +1,33 @@
+---
+name: Feature
+requests:
+- name: Feature / List all features
+  method: GET
+  url: "{{baseUrl}}/api/v1/features"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Feature / Retrieve a feature
+  method: GET
+  url: "{{baseUrl}}/api/v1/features/{{featureId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Feature / List all dependencies
+  method: GET
+  url: "{{baseUrl}}/api/v1/features/{{featureId}}/dependencies"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Feature / List all dependents
+  method: GET
+  url: "{{baseUrl}}/api/v1/features/{{featureId}}/dependents"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Feature / Update a feature lifecycle
+  method: POST
+  url: "{{baseUrl}}/api/v1/features/{{featureId}}/{{lifecycle}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

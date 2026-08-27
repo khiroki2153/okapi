@@ -1,0 +1,27 @@
+---
+name: OrgCreator
+requests:
+- name: OrgCreator / Create an org
+  method: POST
+  url: "{{baseUrl}}/api/v1/orgs"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      subdomain: my-child-org-1
+      name: My Child Org 1
+      website: http://www.examplecorp.com
+      edition: SKU
+      admin:
+        profile:
+          firstName: First
+          lastName: Last
+          email: FirstLast@example.com
+          login: FirstLast@example.com
+          mobilePhone:
+        credentials:
+          password:
+            value: XXXX

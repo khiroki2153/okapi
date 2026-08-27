@@ -1,0 +1,8 @@
+# Environment files contain real SSWS tokens / client secrets — never commit them.
+/envs/*
+!/envs/.gitkeep
+
+*.har
+
+# Personal Claude Code settings (permissions etc.), not meant to be shared.
+/.claude/settings.local.json

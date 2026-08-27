@@ -1,0 +1,21 @@
+---
+name: Session
+requests:
+- name: Session / Retrieve a session
+  method: GET
+  url: "{{baseUrl}}/api/v1/sessions/{{sessionId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Session / Revoke a session
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/sessions/{{sessionId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Session / Refresh a session
+  method: POST
+  url: "{{baseUrl}}/api/v1/sessions/{{sessionId}}/lifecycle/refresh"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

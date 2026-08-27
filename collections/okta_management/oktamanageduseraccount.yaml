@@ -1,0 +1,55 @@
+---
+name: OktaManagedUserAccount
+requests:
+- name: OktaManagedUserAccount / List all Okta managed user accounts
+  method: GET
+  url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OktaManagedUserAccount / Create an Okta managed user account
+  method: POST
+  url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: AD Integrations Admin
+      description: Shared admin account for managing AD integrations
+      oktaUserId: 00u11s48P9zGW8yqm0g5
+      ownerUserIds:
+      - 00u22t59Q0aHbNEXi1h8
+      ownerGroupIds:
+      - 00g57qp78yZT2XBA40g7
+- name: OktaManagedUserAccount / Retrieve an Okta managed user account
+  method: GET
+  url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OktaManagedUserAccount / Delete an Okta managed user account
+  method: DELETE
+  url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OktaManagedUserAccount / Update an Okta managed user account
+  method: PATCH
+  url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: AD Integrations Admin - Production
+      description: Updated description for production AD integration admin account
+      ownerUserIds:
+      - 00u22t59Q0aHbNEXi1h8
+      - 00u44v71S2cJdPGZk3j0
+      ownerGroupIds:
+      - 00g57qp78yZT2XBA40g7

@@ -1,0 +1,279 @@
+---
+name: IdentitySource
+requests:
+- name: IdentitySource / Create an identity source group
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/groups"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      externalId: GROUPEXT123456784C2IF
+      profile:
+        displayName: West Coast users
+        description: All users West of The Rockies
+- name: IdentitySource / Retrieve an identity source group
+  method: GET
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/groups/{{groupOrExternalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Update an identity source group
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/groups/{{groupOrExternalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      externalId: GROUPEXT123456784C2IF
+      profile:
+        displayName: West Coast users
+        description: All users West of The Rockies
+- name: IdentitySource / Delete an identity source group
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/groups/{{groupOrExternalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Retrieve the memberships for the given identity source group
+  method: GET
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/groups/{{groupOrExternalId}}/membership"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Create the memberships for the given identity source group
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/groups/{{groupOrExternalId}}/membership"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      memberExternalId: USEREXT123456784C2IFA
+- name: IdentitySource / Delete the memberships for the specified identity source
+    group
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/groups/{{groupOrExternalId}}/membership/{{memberExternalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / List all identity source sessions
+  method: GET
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Create an identity source session
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Retrieve an identity source session
+  method: GET
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Delete an identity source session
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Upload the data to be deleted in Okta
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}/bulk-delete"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      entityType: USERS
+      profiles:
+      - externalId: EXT123456784C2IF
+      - externalId: EXT123456784C3IF
+      - externalId: EXT123456784C4IF
+- name: IdentitySource / Upload the group memberships to be deleted in Okta
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}/bulk-group-memberships-delete"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      memberships:
+      - groupExternalId: GROUPEXT123456784C2IFA
+        memberExternalIds:
+        - USEREXT123456784C2IFA
+        - USEREXT123456784C3IFB
+        - USEREXT123456784C4IFC
+      - groupExternalId: GROUPEXT123456784C2IFB
+        memberExternalIds:
+        - USEREXT123456784C2IFA
+        - USEREXT123456784C3IFB
+        - USEREXT123456784C4IFC
+- name: IdentitySource / Upload the group memberships to be upserted in Okta
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}/bulk-group-memberships-upsert"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      memberships:
+      - groupExternalId: GROUPEXT123456784C2IFA
+        memberExternalIds:
+        - USEREXT123456784C2IFA
+        - USEREXT123456784C3IFB
+        - USEREXT123456784C4IFC
+      - groupExternalId: GROUPEXT123456784C2IFB
+        memberExternalIds:
+        - USEREXT123456784C2IFA
+        - USEREXT123456784C3IFB
+        - USEREXT123456784C4IFC
+- name: IdentitySource / Upload the group external IDs to be deleted in Okta
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}/bulk-groups-delete"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      externalIds:
+      - GROUPEXT123456784C2IF
+      - GROUPEXT123456784C3IF
+      - GROUPEXT123456784C4IF
+- name: IdentitySource / Upload the group profiles without memberships to be upserted
+    in Okta
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}/bulk-groups-upsert"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      profiles:
+      - externalId: GROUPEXT123456784C2IF
+        profile:
+          displayName: group1
+          description: group1 description
+      - externalId: GROUPEXT123456784C3IF
+        profile:
+          displayName: group2
+          description: group2 description
+- name: IdentitySource / Upload the data to be upserted in Okta
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}/bulk-upsert"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      entityType: USERS
+      profiles:
+      - externalId: EXT123456784C2IF
+        profile:
+          userName: isaac.brock@example.com
+          firstName: Isaac
+          lastName: Brock
+          email: isaac.brock@example.com
+          secondEmail: isaac2.brock@example.com
+          mobilePhone: 123-456-7890
+          homeAddress: '10800 NE 8th St #600, Bellevue, WA 98004'
+      - externalId: EXT123456784C3IF
+        profile:
+          userName: jane.smith@example.com
+          firstName: Jane
+          lastName: Smith
+          email: jane.smith@example.com
+          secondEmail: jane2.smith@example.com
+          mobilePhone: 555-123-4567
+          homeAddress: Seattle, WA 98101
+- name: IdentitySource / Start the import from the identity source
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/sessions/{{sessionId}}/start-import"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Create an identity source user
+  method: POST
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/users"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      externalId: EXT987654321Z9Y7X
+      profile:
+        userName: emily.jones@example.com
+        firstName: Emily
+        lastName: Jones
+        email: emily.jones@example.com
+        secondEmail: emily.secondary@example.com
+        mobilePhone: 987-654-3210
+        homeAddress: '10800 NE 8th St #600, Bellevue, WA 98004'
+- name: IdentitySource / Retrieve an identity source user
+  method: GET
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/users/{{externalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Replace an existing identity source user
+  method: PUT
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/users/{{externalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      profile:
+        firstName: Emily
+        lastName: Brock
+        email: brockly@email.com
+        userName: brockly@email.com
+- name: IdentitySource / Delete an identity source user
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/users/{{externalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentitySource / Update an identity source user
+  method: PATCH
+  url: "{{baseUrl}}/api/v1/identity-sources/{{identitySourceId}}/users/{{externalId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      profile:
+        firstName: Emily
+        lastName: Brock
+        email: emily.brock@update.com
+        userName: emily.brock@update.com

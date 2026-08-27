@@ -1,0 +1,70 @@
+---
+name: Themes
+requests:
+- name: Themes / List all themes
+  method: GET
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Themes / Retrieve a theme
+  method: GET
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Themes / Replace a theme
+  method: PUT
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      primaryColorHex: "#1662dd"
+      primaryColorContrastHex: "#000000"
+      secondaryColorHex: "#ebebed"
+      secondaryColorContrastHex: "#000000"
+      signInPageTouchPointVariant: OKTA_DEFAULT
+      endUserDashboardTouchPointVariant: OKTA_DEFAULT
+      errorPageTouchPointVariant: OKTA_DEFAULT
+      emailTemplateTouchPointVariant: OKTA_DEFAULT
+      loadingPageTouchPointVariant: OKTA_DEFAULT
+- name: Themes / Upload the background image
+  method: POST
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/background-image"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Themes / Delete the background image
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/background-image"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Themes / Upload the favicon
+  method: POST
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/favicon"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Themes / Delete the favicon
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/favicon"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Themes / Upload the logo
+  method: POST
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/logo"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Themes / Delete the logo
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/logo"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

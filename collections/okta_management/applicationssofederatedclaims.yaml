@@ -1,0 +1,45 @@
+---
+name: ApplicationSSOFederatedClaims
+requests:
+- name: ApplicationSSOFederatedClaims / List all configured federated claims
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/federated-claims"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationSSOFederatedClaims / Create a federated claim
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/federated-claims"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: role
+      expression: appuser.entitlements.role
+- name: ApplicationSSOFederatedClaims / Retrieve a federated claim
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/federated-claims/{{claimId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationSSOFederatedClaims / Replace a federated claim
+  method: PUT
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/federated-claims/{{claimId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: readOnly
+      expression: appuser.entitlements.readOnly
+- name: ApplicationSSOFederatedClaims / Delete a federated claim
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/federated-claims/{{claimId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

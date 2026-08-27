@@ -1,0 +1,50 @@
+---
+name: UserAuthenticatorEnrollments
+requests:
+- name: UserAuthenticatorEnrollments / List all authenticator enrollments
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/authenticator-enrollments"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserAuthenticatorEnrollments / Create an auto-activated Phone authenticator
+    enrollment
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/authenticator-enrollments/phone"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      authenticatorId: aut5l4ttFyGEWdy6V0k7
+      profile:
+        phoneNumber: "+14086673418"
+- name: UserAuthenticatorEnrollments / Create an auto-activated TAC authenticator
+    enrollment
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/authenticator-enrollments/tac"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      authenticatorId: autnmtl4xbt8RQVzA0g4
+      profile:
+        ttl: 11
+        multiUse: false
+- name: UserAuthenticatorEnrollments / Retrieve an authenticator enrollment
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/authenticator-enrollments/{{enrollmentId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserAuthenticatorEnrollments / Delete an authenticator enrollment
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/authenticator-enrollments/{{enrollmentId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

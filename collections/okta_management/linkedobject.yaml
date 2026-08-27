@@ -1,0 +1,41 @@
+---
+name: LinkedObject
+requests:
+- name: LinkedObject / List all linked object definitions
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/schemas/user/linkedObjects"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: LinkedObject / Create a linked object definition
+  method: POST
+  url: "{{baseUrl}}/api/v1/meta/schemas/user/linkedObjects"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      primary:
+        name: manager
+        title: manager
+        description: Manager link property
+        type: USER
+      associated:
+        name: subordinate
+        title: subordinate
+        description: Subordinate link property
+        type: USER
+- name: LinkedObject / Retrieve a linked object definition
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/schemas/user/linkedObjects/{{linkedObjectName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: LinkedObject / Delete a linked object definition
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/meta/schemas/user/linkedObjects/{{linkedObjectName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

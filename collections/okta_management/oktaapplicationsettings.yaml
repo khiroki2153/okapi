@@ -1,0 +1,21 @@
+---
+name: OktaApplicationSettings
+requests:
+- name: OktaApplicationSettings / Retrieve the Okta application settings
+  method: GET
+  url: "{{baseUrl}}/api/v1/first-party-app-settings/{{appName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OktaApplicationSettings / Replace the Okta application settings
+  method: PUT
+  url: "{{baseUrl}}/api/v1/first-party-app-settings/{{appName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      sessionMaxLifetimeMinutes: 720
+      sessionIdleTimeoutMinutes: 15

@@ -1,0 +1,90 @@
+---
+name: CustomTelephonyProvider
+requests:
+- name: CustomTelephonyProvider / List all custom telephony providers
+  method: GET
+  url: "{{baseUrl}}/api/v1/telephony-providers"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CustomTelephonyProvider / Create a custom telephony provider
+  method: POST
+  url: "{{baseUrl}}/api/v1/telephony-providers"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      providerAuthToken: 11a9b6c435967abe806f4f0d6ec0f382
+      providerCapability: ALL
+      providerName: TWILIO
+      providerSid: ACb49fb19a09b2f5d2f121fe1c207689dt
+      providerSettings:
+        sms:
+          twilioPhoneNumber: "+1234567890"
+        call:
+          twilioVerifySid: example-verify-sid
+- name: CustomTelephonyProvider / Retrieve a custom telephony provider
+  method: GET
+  url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CustomTelephonyProvider / Delete a custom telephony provider
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CustomTelephonyProvider / Update a custom telephony provider credential
+  method: PATCH
+  url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      id: oct3v00k4iOFlEJmQ806
+      providerAuthToken: 11a9b6c435967abe806f4f0d6ec0f382
+      providerSid: ACb49fb19a09b2f5d2f121fe1c207689dt
+      providerSettings:
+        sms:
+          twilioPhoneNumber: "+1234567890"
+        call:
+          twilioVerifySid: updated-verify-sid
+- name: CustomTelephonyProvider / Activate a custom telephony provider
+  method: POST
+  url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CustomTelephonyProvider / Deactivate a custom telephony provider
+  method: POST
+  url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CustomTelephonyProvider / Set a custom telephony provider as a primary telephony
+    provider
+  method: POST
+  url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/setAsPrimary"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CustomTelephonyProvider / Send a test message from a custom telephony provider
+  method: POST
+  url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/test"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      factor: SMS
+      phoneNumber: "+1234567890"
+      countryCodeIso2: US

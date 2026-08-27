@@ -1,0 +1,62 @@
+{
+  "info": {
+    "name": "Okta Users API",
+    "description": "Sample Postman v2.1 export",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Authorization", "value": "SSWS {{apiToken}}" },
+              { "key": "X-Disabled", "value": "nope", "disabled": true }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/users?limit=25",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "users"],
+              "query": [
+                { "key": "limit", "value": "25" },
+                { "key": "disabled", "value": "x", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": { "raw": "{{baseUrl}}/api/v1/users" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile\": {\n    \"firstName\": \"John\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Create User Form",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/api/v1/users/form" },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "firstName", "value": "John" },
+                { "key": "skip", "value": "x", "disabled": true }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

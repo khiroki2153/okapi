@@ -1,0 +1,65 @@
+---
+name: LogStream
+requests:
+- name: LogStream / List all log streams
+  method: GET
+  url: "{{baseUrl}}/api/v1/logStreams"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: LogStream / Create a log stream
+  method: POST
+  url: "{{baseUrl}}/api/v1/logStreams"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: aws_eventbridge
+      name: Example AWS EventBridge
+      settings:
+        eventSourceName: your-event-source-name
+        accountId: '123456789012'
+        region: us-east-2
+- name: LogStream / Retrieve a log stream
+  method: GET
+  url: "{{baseUrl}}/api/v1/logStreams/{{logStreamId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: LogStream / Replace a log stream
+  method: PUT
+  url: "{{baseUrl}}/api/v1/logStreams/{{logStreamId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: aws_eventbridge
+      name: Updated AWS EventBridge
+      settings:
+        eventSourceName: your-event-source-name
+        accountId: '123456789012'
+        region: us-east-2
+- name: LogStream / Delete a log stream
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/logStreams/{{logStreamId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: LogStream / Activate a log stream
+  method: POST
+  url: "{{baseUrl}}/api/v1/logStreams/{{logStreamId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: LogStream / Deactivate a log stream
+  method: POST
+  url: "{{baseUrl}}/api/v1/logStreams/{{logStreamId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

@@ -1,0 +1,82 @@
+---
+name: User
+requests:
+- name: User / List all users
+  method: GET
+  url: "{{baseUrl}}/api/v1/users"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: User / Create a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      profile:
+        firstName: Isaac
+        lastName: Brock
+        email: isaac.brock@example.com
+        login: isaac.brock@example.com
+        mobilePhone: 555-415-1337
+- name: User / Retrieve a user
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: User / Replace a user
+  method: PUT
+  url: "{{baseUrl}}/api/v1/users/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      credentials:
+        password:
+          value: tlpWENT2m
+        recovery_question:
+          question: Who's a major player in the cowboy scene?
+          answer: Annie Oakley
+        provider:
+          type: OKTA
+          name: OKTA
+      profile:
+        firstName: Isaac
+        lastName: Brock
+        email: isaac.brock@example.com
+        login: isaac.brock@example.com
+        mobilePhone: 555-415-1337
+- name: User / Update a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      profile:
+        firstName: Isaac
+        email: isaac.brock@update.example.com
+        mobilePhone: 555-415-1337
+- name: User / Delete a user
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/users/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: User / List all user blocks
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{id}}/blocks"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

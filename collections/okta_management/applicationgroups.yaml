@@ -1,0 +1,58 @@
+---
+name: ApplicationGroups
+requests:
+- name: ApplicationGroups / List all application groups
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationGroups / Retrieve an application group
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationGroups / Assign an application group
+  method: PUT
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      id: 00g15acRUy0SYb9GT0g4
+      profile:
+        preferredLanguage: English
+        manager: Arsene Wenger
+        securityQuestion: Who is the footballer to have played the game
+        securityAnswer: Jay Jay Okocha
+        timezone: Canada/Eastern
+        initialStatus: active_with_pass
+        managerId: ike.ogb@gmail.com
+        locale: en_US
+        division: top
+        organization:
+        userType:
+        department: Accounting
+- name: ApplicationGroups / Unassign an application group
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationGroups / Update an application group
+  method: PATCH
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+    - op: replace
+      path: "/profile/manager"
+      value: Carlo Ancelotti

@@ -1,0 +1,51 @@
+---
+name: RoleECustomPermission
+requests:
+- name: RoleECustomPermission / List all custom role permissions
+  method: GET
+  url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}/permissions"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleECustomPermission / Retrieve a custom role permission
+  method: GET
+  url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}/permissions/{{permissionType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleECustomPermission / Replace a custom role permission
+  method: PUT
+  url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}/permissions/{{permissionType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      conditions:
+        include:
+          okta:ResourceAttribute/User/Profile:
+          - city
+          - state
+- name: RoleECustomPermission / Create a custom role permission
+  method: POST
+  url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}/permissions/{{permissionType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      conditions:
+        include:
+          okta:ResourceAttribute/User/Profile:
+          - city
+          - state
+- name: RoleECustomPermission / Delete a custom role permission
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}/permissions/{{permissionType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

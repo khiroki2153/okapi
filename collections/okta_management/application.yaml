@@ -1,0 +1,66 @@
+---
+name: Application
+requests:
+- name: Application / List all applications
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Application / Create an application
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: bookmark
+      label: Sample Bookmark App
+      signOnMode: BOOKMARK
+      settings:
+        app:
+          url: https://example.com/bookmark.html
+- name: Application / Retrieve an application
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Application / Replace an application
+  method: PUT
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: bookmark
+      label: Sample Bookmark App updated
+      signOnMode: BOOKMARK
+      settings:
+        app:
+          requestIntegration: true
+          url: https://example.com/bookmark.html
+- name: Application / Delete an application
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Application / Activate an application
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Application / Deactivate an application
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

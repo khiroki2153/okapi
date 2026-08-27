@@ -1,0 +1,45 @@
+---
+name: GroupPushMapping
+requests:
+- name: GroupPushMapping / List all group push mappings
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/group-push/mappings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: GroupPushMapping / Create a group push mapping
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/group-push/mappings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      sourceGroupId: 00g00000000000000000
+      status: ACTIVE
+      targetGroupName: NewGroup
+- name: GroupPushMapping / Retrieve a group push mapping
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/group-push/mappings/{{mappingId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: GroupPushMapping / Delete a group push mapping
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/group-push/mappings/{{mappingId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: GroupPushMapping / Update a group push mapping
+  method: PATCH
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/group-push/mappings/{{mappingId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      status: INACTIVE

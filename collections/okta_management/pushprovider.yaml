@@ -1,0 +1,57 @@
+---
+name: PushProvider
+requests:
+- name: PushProvider / List all push providers
+  method: GET
+  url: "{{baseUrl}}/api/v1/push-providers"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: PushProvider / Create a push provider
+  method: POST
+  url: "{{baseUrl}}/api/v1/push-providers"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: APNs Example
+      providerType: APNS
+      configuration:
+        keyId: KEY_ID
+        teamId: TEAM_ID
+        tokenSigningKey: "-----BEGIN PRIVATE KEY-----\\nPRIVATE_KEY\\n-----END PRIVATE
+          KEY-----\\n"
+        fileName: fileName.p8
+- name: PushProvider / Retrieve a push provider
+  method: GET
+  url: "{{baseUrl}}/api/v1/push-providers/{{pushProviderId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: PushProvider / Replace a push provider
+  method: PUT
+  url: "{{baseUrl}}/api/v1/push-providers/{{pushProviderId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: APNs Example
+      providerType: APNS
+      configuration:
+        keyId: KEY_ID
+        teamId: TEAM_ID
+        tokenSigningKey: "-----BEGIN PRIVATE KEY-----\\nPRIVATE_KEY\\n-----END PRIVATE
+          KEY-----\\n"
+        fileName: fileName.p8
+- name: PushProvider / Delete a push provider
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/push-providers/{{pushProviderId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

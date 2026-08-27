@@ -1,0 +1,98 @@
+---
+name: EventHook
+requests:
+- name: EventHook / List all event hooks
+  method: GET
+  url: "{{baseUrl}}/api/v1/eventHooks"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EventHook / Create an event hook
+  method: POST
+  url: "{{baseUrl}}/api/v1/eventHooks"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: Event Hook Test
+      events:
+        type: EVENT_TYPE
+        items:
+        - group.user_membership.add
+      channel:
+        type: HTTP
+        version: 1.0.0
+        config:
+          uri: https://example_external_service/userAdded
+          headers:
+          - key: X-Other-Header
+            value: my-header-value
+          authScheme:
+            type: HEADER
+            key: Authorization
+            value: my-shared-secret
+- name: EventHook / Retrieve an event hook
+  method: GET
+  url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EventHook / Replace an event hook
+  method: PUT
+  url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: Event Hook with Filter
+      description: An event hook using an Okta Expression Language filter
+      events:
+        type: EVENT_TYPE
+        items:
+        - group.user_membership.add
+        filter:
+          type: EXPRESSION_LANGUAGE
+          eventFilterMap:
+          - event: group.user_membership.add
+            condition:
+              expression: event.target.?[type eq 'UserGroup'].size()>0 && event.target.?[displayName
+                eq 'Sales'].size()>0
+      channel:
+        type: HTTP
+        version: 1.0.0
+        config:
+          uri: https://example_external_service/userAdded
+          authScheme:
+            type: HEADER
+            key: Authorization
+            value: my-shared-secret
+- name: EventHook / Delete an event hook
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EventHook / Activate an event hook
+  method: POST
+  url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EventHook / Deactivate an event hook
+  method: POST
+  url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EventHook / Verify an event hook
+  method: POST
+  url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}/lifecycle/verify"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

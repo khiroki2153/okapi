@@ -1,0 +1,9 @@
+---
+name: OrgSettingMetadata
+requests:
+- name: OrgSettingMetadata / Retrieve the Org metadata
+  method: GET
+  url: "{{baseUrl}}/.well-known/okta-organization"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

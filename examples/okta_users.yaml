@@ -1,0 +1,31 @@
+name: Okta Users API
+description: ユーザー管理系のリクエスト集
+
+requests:
+  - name: List Users
+    method: GET
+    url: "{{baseUrl}}/api/v1/users"
+    headers:
+      Authorization: "SSWS {{apiToken}}"
+      Accept: application/json
+    query:
+      limit: 25
+      filter: 'status eq "ACTIVE"'
+
+  - name: Create User
+    method: POST
+    url: "{{baseUrl}}/api/v1/users"
+    headers:
+      Authorization: "SSWS {{apiToken}}"
+      Content-Type: application/json
+    body:
+      type: json
+      content:
+        profile:
+          firstName: John
+          lastName: Doe
+          email: john.doe@example.com
+          login: john.doe@example.com
+        credentials:
+          password:
+            value: "TempPass1234!"

@@ -1,0 +1,89 @@
+---
+name: GroupRule
+requests:
+- name: GroupRule / List all group rules
+  method: GET
+  url: "{{baseUrl}}/api/v1/groups/rules"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: GroupRule / Create a group rule
+  method: POST
+  url: "{{baseUrl}}/api/v1/groups/rules"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: group_rule
+      name: Engineering group rule
+      conditions:
+        people:
+          users:
+            exclude:
+            - 00u22w79JPMEeeuLr0g4
+          groups:
+            exclude: []
+        expression:
+          value: user.role=="Engineer"
+          type: urn:okta:expression:1.0
+      actions:
+        assignUserToGroups:
+          groupIds:
+          - 00gjitX9HqABSoqTB0g3
+- name: GroupRule / Retrieve a group rule
+  method: GET
+  url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: GroupRule / Replace a group rule
+  method: PUT
+  url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: group_rule
+      id: 0pr3f7zMZZHPgUoWO0g4
+      status: INACTIVE
+      name: Engineering group rule
+      created: '2016-12-01T14:40:04.000Z'
+      lastUpdated: '2016-12-01T14:40:04.000Z'
+      conditions:
+        people:
+          users:
+            exclude:
+            - 00u22w79JPMEeeuLr0g4
+          groups:
+            exclude: []
+        expression:
+          value: user.role=="Engineer"
+          type: urn:okta:expression:1.0
+      actions:
+        assignUserToGroups:
+          groupIds:
+          - 00gjitX9HqABSoqTB0g3
+- name: GroupRule / Delete a group rule
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: GroupRule / Activate a group rule
+  method: POST
+  url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: GroupRule / Deactivate a group rule
+  method: POST
+  url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

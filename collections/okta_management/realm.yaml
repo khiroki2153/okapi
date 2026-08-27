@@ -1,0 +1,53 @@
+---
+name: Realm
+requests:
+- name: Realm / List all realms
+  method: GET
+  url: "{{baseUrl}}/api/v1/realms"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Realm / Create a realm
+  method: POST
+  url: "{{baseUrl}}/api/v1/realms"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      profile:
+        name: Car Co
+        realmType: PARTNER
+        domains:
+        - atko.com
+        - user.com
+- name: Realm / Retrieve a realm
+  method: GET
+  url: "{{baseUrl}}/api/v1/realms/{{realmId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Realm / Replace the realm profile
+  method: PUT
+  url: "{{baseUrl}}/api/v1/realms/{{realmId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      profile:
+        name: Car Co
+        realmType: PARTNER
+        domains:
+        - atko.com
+        - user.com
+- name: Realm / Delete a realm
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/realms/{{realmId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

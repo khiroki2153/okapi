@@ -1,0 +1,89 @@
+---
+name: CAPTCHA
+requests:
+- name: CAPTCHA / List all CAPTCHA instances
+  method: GET
+  url: "{{baseUrl}}/api/v1/captchas"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CAPTCHA / Create a CAPTCHA instance
+  method: POST
+  url: "{{baseUrl}}/api/v1/captchas"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: myHCaptcha
+      secretKey: xxxxxxxxxxx
+      siteKey: xxxxxxxxxxx
+      type: HCAPTCHA
+- name: CAPTCHA / Retrieve a CAPTCHA instance
+  method: GET
+  url: "{{baseUrl}}/api/v1/captchas/{{captchaId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CAPTCHA / Replace a CAPTCHA instance
+  method: PUT
+  url: "{{baseUrl}}/api/v1/captchas/{{captchaId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: myHCaptcha
+      secretKey: xxxxxxxxxxx
+      siteKey: xxxxxxxxxxx
+      type: HCAPTCHA
+- name: CAPTCHA / Update a CAPTCHA instance
+  method: POST
+  url: "{{baseUrl}}/api/v1/captchas/{{captchaId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: myHCaptcha
+      secretKey: xxxxxxxxxxx
+      siteKey: xxxxxxxxxxx
+      type: HCAPTCHA
+- name: CAPTCHA / Delete a CAPTCHA instance
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/captchas/{{captchaId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CAPTCHA / Retrieve the org-wide CAPTCHA settings
+  method: GET
+  url: "{{baseUrl}}/api/v1/org/captcha"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: CAPTCHA / Replace the org-wide CAPTCHA settings
+  method: PUT
+  url: "{{baseUrl}}/api/v1/org/captcha"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      captchaId: abcd4567
+      enabledPages:
+      - SSR
+      - SIGN_IN
+- name: CAPTCHA / Delete the org-wide CAPTCHA settings
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/org/captcha"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

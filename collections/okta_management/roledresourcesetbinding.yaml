@@ -1,0 +1,34 @@
+---
+name: RoleDResourceSetBinding
+requests:
+- name: RoleDResourceSetBinding / List all role resource set bindings
+  method: GET
+  url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/bindings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleDResourceSetBinding / Create a role resource set binding
+  method: POST
+  url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/bindings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      role: cr0Yq6IJxGIr0ouum0g3
+      members:
+      - https://{yourOktaDomain}/api/v1/groups/00guaxWZ0AOa5NFAj0g3
+- name: RoleDResourceSetBinding / Retrieve a role resource set binding
+  method: GET
+  url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/bindings/{{roleIdOrLabel}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleDResourceSetBinding / Delete a role resource set binding
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/bindings/{{roleIdOrLabel}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

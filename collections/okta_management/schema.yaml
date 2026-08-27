@@ -1,0 +1,109 @@
+---
+name: Schema
+requests:
+- name: Schema / Retrieve the default app user schema for an app
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/schemas/apps/{{appId}}/default"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Schema / Update the app user profile schema for an app
+  method: POST
+  url: "{{baseUrl}}/api/v1/meta/schemas/apps/{{appId}}/default"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      definitions:
+        custom:
+          id: "#custom"
+          type: object
+          properties:
+            salesforceUserName:
+              title: Salesforce username
+              externalName: salesforceUserName
+              description: User's username for Salesforce
+              type: string
+              required: false
+              minLength: 1
+              maxLength: 20
+          required: []
+- name: Schema / Retrieve the default group schema
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/schemas/group/default"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Schema / Update the group profile schema
+  method: POST
+  url: "{{baseUrl}}/api/v1/meta/schemas/group/default"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      definitions:
+        custom:
+          id: "#custom"
+          type: object
+          properties:
+            groupContact:
+              title: Group administrative contact
+              description: Group administrative contact
+              type: string
+              required: false
+              minLength: 1
+              maxLength: 20
+              permissions:
+              - principal: SELF
+                action: READ_WRITE
+          required: []
+- name: Schema / List the log stream schemas
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/schemas/logStream"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Schema / Retrieve the log stream schema for the schema type
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/schemas/logStream/{{logStreamType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Schema / Retrieve a user schema
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/schemas/user/{{schemaId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Schema / Update a user schema
+  method: POST
+  url: "{{baseUrl}}/api/v1/meta/schemas/user/{{schemaId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      definitions:
+        custom:
+          id: "#custom"
+          type: object
+          properties:
+            salesforceUserName:
+              title: Salesforce username
+              description: User's username for Salesforce
+              type: string
+              required: false
+              minLength: 1
+              maxLength: 20
+              permissions:
+              - principal: SELF
+                action: READ_WRITE
+          required: []

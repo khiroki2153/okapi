@@ -1,0 +1,27 @@
+---
+name: UserResources
+requests:
+- name: UserResources / List all assigned app links
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{id}}/appLinks"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserResources / List all groups
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{id}}/groups"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserResources / List all clients
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/clients"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserResources / List all devices for an enrolled user
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/devices"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

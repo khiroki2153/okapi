@@ -1,0 +1,54 @@
+---
+name: EmailDomain
+requests:
+- name: EmailDomain / List all email domains
+  method: GET
+  url: "{{baseUrl}}/api/v1/email-domains"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EmailDomain / Create an email domain
+  method: POST
+  url: "{{baseUrl}}/api/v1/email-domains"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      displayName: Admin
+      userName: admin
+      domain: example.com
+      brandId: bnd100iSrkcN6aR680g1
+      validationSubdomain: mail
+- name: EmailDomain / Retrieve an email domain
+  method: GET
+  url: "{{baseUrl}}/api/v1/email-domains/{{emailDomainId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EmailDomain / Replace an email domain
+  method: PUT
+  url: "{{baseUrl}}/api/v1/email-domains/{{emailDomainId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      displayName: IT Admin
+      userName: noreply
+- name: EmailDomain / Delete an email domain
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/email-domains/{{emailDomainId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: EmailDomain / Verify an email domain
+  method: POST
+  url: "{{baseUrl}}/api/v1/email-domains/{{emailDomainId}}/verify"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

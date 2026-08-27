@@ -1,0 +1,102 @@
+---
+name: AuthorizationServerRules
+requests:
+- name: AuthorizationServerRules / List all policy rules
+  method: GET
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AuthorizationServerRules / Create a policy rule
+  method: POST
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: RESOURCE_ACCESS
+      name: Default Policy Rule
+      priority: 1
+      conditions:
+        people:
+          groups:
+            include:
+            - EVERYONE
+        grantTypes:
+          include:
+          - implicit
+          - client_credentials
+          - authorization_code
+          - password
+        scopes:
+          include:
+          - "*"
+      actions:
+        token:
+          accessTokenLifetimeMinutes: 60
+          refreshTokenLifetimeMinutes: 0
+          refreshTokenWindowMinutes: 10080
+          inlineHook:
+            id: cal4egvp1mbMldrYN0g7
+- name: AuthorizationServerRules / Retrieve a policy rule
+  method: GET
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AuthorizationServerRules / Replace a policy rule
+  method: PUT
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: RESOURCE_ACCESS
+      name: Default Policy Rule
+      priority: 1
+      status: ACTIVE
+      conditions:
+        people:
+          groups:
+            include:
+            - EVERYONE
+        grantTypes:
+          include:
+          - implicit
+          - client_credentials
+          - authorization_code
+          - password
+        scopes:
+          include:
+          - "*"
+      actions:
+        token:
+          accessTokenLifetimeMinutes: 60
+          refreshTokenLifetimeMinutes: 0
+          refreshTokenWindowMinutes: 10080
+          inlineHook:
+            id: cal4egvp1mbMldrYN0g7
+- name: AuthorizationServerRules / Delete a policy rule
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AuthorizationServerRules / Activate a policy rule
+  method: POST
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AuthorizationServerRules / Deactivate a policy rule
+  method: POST
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

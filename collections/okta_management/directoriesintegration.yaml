@@ -1,0 +1,35 @@
+---
+name: DirectoriesIntegration
+requests:
+- name: DirectoriesIntegration / Update an external directory group membership
+  method: POST
+  url: "{{baseUrl}}/api/v1/directories/{{appInstanceId}}/groups/modify"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      id: 00g1xucgTZFrziXg10g4
+      parameters:
+        action: ADD
+        attribute: member
+        values:
+        - 00u1bh5efGKMsSiLv0g4
+- name: DirectoriesIntegration / Submit a query for AD Group
+  method: POST
+  url: "{{baseUrl}}/api/v1/directories/{{appInstanceId}}/groups/{{groupId}}/query"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content: {}
+- name: DirectoriesIntegration / Retrieve the results of an AD group query
+  method: GET
+  url: "{{baseUrl}}/api/v1/directories/{{appInstanceId}}/groups/{{groupId}}/query/{{resultId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

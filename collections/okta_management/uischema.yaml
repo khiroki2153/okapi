@@ -1,0 +1,81 @@
+---
+name: UISchema
+requests:
+- name: UISchema / List all UI schemas
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/uischemas"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UISchema / Create a UI schema
+  method: POST
+  url: "{{baseUrl}}/api/v1/meta/uischemas"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      uiSchema:
+        type: Group
+        elements:
+        - type: Control
+          scope: "#/properties/firstName"
+          label: First Name
+          options:
+            format: text
+        - type: Control
+          scope: "#/properties/lastName"
+          label: Last Name
+          options:
+            format: text
+        - type: Control
+          scope: "#/properties/email"
+          label: Primary email
+          options:
+            format: text
+        buttonLabel: Submit
+        label: Sign in
+- name: UISchema / Retrieve a UI schema
+  method: GET
+  url: "{{baseUrl}}/api/v1/meta/uischemas/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UISchema / Replace a UI schema
+  method: PUT
+  url: "{{baseUrl}}/api/v1/meta/uischemas/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      uiSchema:
+        type: Group
+        elements:
+        - type: Control
+          scope: "#/properties/firstName"
+          label: First Name
+          options:
+            format: text
+        - type: Control
+          scope: "#/properties/lastName"
+          label: Last Name
+          options:
+            format: text
+        - type: Control
+          scope: "#/properties/email"
+          label: Primary email
+          options:
+            format: text
+        buttonLabel: Submit
+        label: Sign in
+- name: UISchema / Delete a UI schema
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/meta/uischemas/{{id}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

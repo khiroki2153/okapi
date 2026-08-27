@@ -1,0 +1,67 @@
+---
+name: DeviceAssurance
+requests:
+- name: DeviceAssurance / List all device assurance policies
+  method: GET
+  url: "{{baseUrl}}/api/v1/device-assurances"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: DeviceAssurance / Create a device assurance policy
+  method: POST
+  url: "{{baseUrl}}/api/v1/device-assurances"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: Device assurance Android
+      osVersion:
+        minimum: '12'
+      diskEncryptionType:
+        include:
+        - USER
+        - FULL
+      jailbreak: false
+      platform: ANDROID
+      screenLockType:
+        include:
+        - BIOMETRIC
+      secureHardwarePresent: true
+- name: DeviceAssurance / Retrieve a device assurance policy
+  method: GET
+  url: "{{baseUrl}}/api/v1/device-assurances/{{deviceAssuranceId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: DeviceAssurance / Replace a device assurance policy
+  method: PUT
+  url: "{{baseUrl}}/api/v1/device-assurances/{{deviceAssuranceId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: Device assurance Android
+      osVersion:
+        minimum: '12'
+      diskEncryptionType:
+        include:
+        - USER
+        - FULL
+      jailbreak: false
+      platform: ANDROID
+      screenLockType:
+        include:
+        - BIOMETRIC
+      secureHardwarePresent: true
+- name: DeviceAssurance / Delete a device assurance policy
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/device-assurances/{{deviceAssuranceId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

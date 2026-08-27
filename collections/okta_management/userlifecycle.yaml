@@ -1,0 +1,45 @@
+---
+name: UserLifecycle
+requests:
+- name: UserLifecycle / Activate a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLifecycle / Deactivate a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLifecycle / Reactivate a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/reactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLifecycle / Reset the factors
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/reset_factors"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLifecycle / Suspend a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/suspend"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLifecycle / Unlock a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/unlock"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserLifecycle / Unsuspend a user
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/unsuspend"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

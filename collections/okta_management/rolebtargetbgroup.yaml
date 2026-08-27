@@ -1,0 +1,51 @@
+---
+name: RoleBTargetBGroup
+requests:
+- name: RoleBTargetBGroup / List all group role app targets
+  method: GET
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/catalog/apps"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleBTargetBGroup / Assign a group role app target
+  method: PUT
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleBTargetBGroup / Unassign a group role app target
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleBTargetBGroup / Assign a group role app instance target
+  method: PUT
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}/{{appId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleBTargetBGroup / Unassign a group role app instance target
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}/{{appId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleBTargetBGroup / List all group role group targets
+  method: GET
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/groups"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleBTargetBGroup / Assign a group role group target
+  method: PUT
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/groups/{{targetGroupId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleBTargetBGroup / Unassign a group role group target
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}/targets/groups/{{targetGroupId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

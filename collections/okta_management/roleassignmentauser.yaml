@@ -1,0 +1,55 @@
+---
+name: RoleAssignmentAUser
+requests:
+- name: RoleAssignmentAUser / List all users with role assignments
+  method: GET
+  url: "{{baseUrl}}/api/v1/iam/assignees/users"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentAUser / List all user role assignments
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/roles"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentAUser / Assign a user role
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/roles"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content: {}
+- name: RoleAssignmentAUser / Retrieve a user role assignment
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentAUser / Unassign a user role
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentAUser / Retrieve all user role governance sources
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/governance"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentAUser / Retrieve a user role governance source
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/governance/{{grantId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentAUser / Retrieve the user role governance source resources
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/governance/{{grantId}}/resources"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

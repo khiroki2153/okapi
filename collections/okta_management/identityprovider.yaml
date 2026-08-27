@@ -1,0 +1,163 @@
+---
+name: IdentityProvider
+requests:
+- name: IdentityProvider / List all IdPs
+  method: GET
+  url: "{{baseUrl}}/api/v1/idps"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProvider / Create an IdP
+  method: POST
+  url: "{{baseUrl}}/api/v1/idps"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: OKTA_INTEGRATION
+      name: Example Okta Integration IdP
+      protocol:
+        type: SAML2
+        credentials:
+          client:
+            token_endpoint_auth_method: private_key_jwt
+            client_id: your-client-id
+        oktaIdpOrgUrl: https://your-spoke-org.example.com
+      policy:
+        accountLink:
+          action: AUTO
+          filter:
+        provisioning:
+          action: AUTO
+          conditions:
+            deprovisioned:
+              action: NONE
+            suspended:
+              action: NONE
+          groups:
+            action: NONE
+        maxClockSkew: 120000
+        subject:
+          userNameTemplate:
+            template: idpuser.email
+          matchType: USERNAME
+- name: IdentityProvider / Retrieve an IdP
+  method: GET
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProvider / Replace an IdP
+  method: PUT
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      id: 0oa62bc8wppPw0UGr0h7
+      type: SAML2
+      name: Example SAML IdP
+      status: INACTIVE
+      created:
+      lastUpdated: '2016-03-29T21:23:45.000Z'
+      protocol:
+        type: SAML2
+        endpoints:
+          sso:
+            url: https://idp.example.com/saml2/sso
+            binding: HTTP-REDIRECT
+            destination: https://idp.example.com/saml2/sso
+          slo:
+            url: https://idp.example.com/slo
+            binding: HTTP-POST
+          acs:
+            binding: HTTP-POST
+            type: INSTANCE
+        algorithms:
+          request:
+            signature:
+              algorithm: SHA-256
+              scope: REQUEST
+          response:
+            signature:
+              algorithm: SHA-256
+              scope: ANY
+        settings:
+          nameFormat: urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+          participateSlo: true
+        credentials:
+          trust:
+            issuer: https://idp.example.com
+            audience: https://www.okta.com/saml2/service-provider/spCQJRNaaxs7ANqKBO7M
+            kid: your-key-id
+            additionalKids:
+            - additional-key-id
+      policy:
+        provisioning:
+          action: AUTO
+          profileMaster: true
+          groups:
+            action: NONE
+          conditions:
+            deprovisioned:
+              action: NONE
+            suspended:
+              action: NONE
+        accountLink:
+          filter:
+          action: AUTO
+        subject:
+          userNameTemplate:
+            template: idpuser.subjectNameId
+          filter:
+          matchType: USERNAME
+        mapAMRClaims: false
+        trustClaims: false
+        maxClockSkew: 120000
+      _links:
+        metadata:
+          href: https://{yourOktaDomain}/api/v1/idps/0oa62bc8wppPw0UGr0h7/metadata.xml
+          type: application/xml
+          hints:
+            allow:
+            - GET
+        acs:
+          href: https://{yourOktaDomain}/sso/saml2/0oa62bc8wppPw0UGr0h7
+          type: application/xml
+          hints:
+            allow:
+            - POST
+        users:
+          href: https://{yourOktaDomain}/api/v1/idps/0oa62bc8wppPw0UGr0h7/users
+          hints:
+            allow:
+            - GET
+        activate:
+          href: https://{yourOktaDomain}/api/v1/idps/0oa62bc8wppPw0UGr0h7/lifecycle/activate
+          hints:
+            allow:
+            - POST
+- name: IdentityProvider / Delete an IdP
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProvider / Activate an IdP
+  method: POST
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProvider / Deactivate an IdP
+  method: POST
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

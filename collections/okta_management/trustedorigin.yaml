@@ -1,0 +1,83 @@
+---
+name: TrustedOrigin
+requests:
+- name: TrustedOrigin / List all trusted origins
+  method: GET
+  url: "{{baseUrl}}/api/v1/trustedOrigins"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: TrustedOrigin / Create a trusted origin
+  method: POST
+  url: "{{baseUrl}}/api/v1/trustedOrigins"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: New trusted origin
+      origin: http://example.com
+      scopes:
+      - type: CORS
+      - type: REDIRECT
+- name: TrustedOrigin / Retrieve a trusted origin
+  method: GET
+  url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: TrustedOrigin / Replace a trusted origin
+  method: PUT
+  url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      value:
+        id: tosue7JvguwJ7U6kz0g3
+        name: Updated Example trusted origin
+        origin: http://updated.example.com
+        scopes:
+        - type: CORS
+        - type: REDIRECT
+        status: ACTIVE
+        created: '2017-12-16T05:01:12.000Z'
+        createdBy: 00ut5t92p6IEOi4bu0g3
+        lastUpdated: '2017-12-16T05:01:12.000Z'
+        lastUpdatedBy: 00ut5t92p6IEOi4bu0g3
+        _links:
+          self:
+            href: https://${yourOktaDomain}/api/v1/trustedOrigins/tosue7JvguwJ7U6kz0g3
+            hints:
+              allow:
+              - GET
+              - PUT
+              - DELETE
+          deactivate:
+            href: https://${yourOktaDomain}/api/v1/trustedOrigins/tosue7JvguwJ7U6kz0g3/lifecycle/deactivate
+            hints:
+              allow:
+              - POST
+- name: TrustedOrigin / Delete a trusted origin
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: TrustedOrigin / Activate a trusted origin
+  method: POST
+  url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: TrustedOrigin / Deactivate a trusted origin
+  method: POST
+  url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

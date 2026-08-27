@@ -1,0 +1,26 @@
+---
+name: OrgSettingContact
+requests:
+- name: OrgSettingContact / List all org contact types
+  method: GET
+  url: "{{baseUrl}}/api/v1/org/contacts"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OrgSettingContact / Retrieve the contact type user
+  method: GET
+  url: "{{baseUrl}}/api/v1/org/contacts/{{contactType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OrgSettingContact / Replace the contact type user
+  method: PUT
+  url: "{{baseUrl}}/api/v1/org/contacts/{{contactType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      userId: 00ux3u0ujW1r5AfZC1d7

@@ -1,0 +1,48 @@
+---
+name: ApplicationConnections
+requests:
+- name: ApplicationConnections / Retrieve the default provisioning connection
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/connections/default"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationConnections / Update the default provisioning connection
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/connections/default"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      baseUrl: https://scim.zscalerbeta.net/1234567/890/scim
+      profile:
+        authScheme: TOKEN
+        token: 00NgAPZqUVy8cX9ehNzzahEE5b-On9sImTcInvWp-x
+- name: ApplicationConnections / Retrieve a JSON Web Key Set (JWKS) for the default
+    provisioning connection
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/connections/default/jwks"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationConnections / Activate the default provisioning connection
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/connections/default/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationConnections / Deactivate the default provisioning connection
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/connections/default/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationConnections / Verify the provisioning connection
+  method: POST
+  url: "{{baseUrl}}/api/v1/apps/{{appName}}/{{appId}}/oauth2/callback"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

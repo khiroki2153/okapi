@@ -1,0 +1,102 @@
+---
+name: NetworkZone
+requests:
+- name: NetworkZone / List all network zones
+  method: GET
+  url: "{{baseUrl}}/api/v1/zones"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: NetworkZone / Create a network zone
+  method: POST
+  url: "{{baseUrl}}/api/v1/zones"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: IP
+      name: newNetworkZone
+      gateways:
+      - type: CIDR
+        value: 1.2.3.4/24
+      - type: CIDR
+        value: 2.3.4.5/24
+      proxies:
+      - type: CIDR
+        value: 2.2.3.4/24
+      - type: CIDR
+        value: 3.3.4.5/24
+- name: NetworkZone / Retrieve a network zone
+  method: GET
+  url: "{{baseUrl}}/api/v1/zones/{{zoneId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: NetworkZone / Replace a network zone
+  method: PUT
+  url: "{{baseUrl}}/api/v1/zones/{{zoneId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: IP
+      id: nzovw2rFz2YoqmvwZ0g9
+      name: UpdatedNetZone
+      status: ACTIVE
+      system: false
+      usage: POLICY
+      gateways:
+      - type: CIDR
+        value: 10.2.3.4/24
+      - type: CIDR
+        value: 12.2.3.4/24
+      - type: RANGE
+        value: 13.4.5.6-13.4.5.8
+      - type: CIDR
+        value: 14.2.3.4/24
+      proxies:
+      - type: CIDR
+        value: 12.2.3.4/24
+      - type: CIDR
+        value: 13.3.4.5/24
+      - type: RANGE
+        value: 14.4.5.6-14.4.5.8
+      - type: RANGE
+        value: 15.5.6.7/24-15.5.6.9
+      _links:
+        self:
+          href: https://{yourOktaDomain}/api/v1/zones/nzovw2rFz2YoqmvwZ0g9
+          hints:
+            allow:
+            - GET
+            - PUT
+            - DELETE
+        deactivate:
+          href: https://{yourOktaDomain}/api/v1/zones/nzovw2rFz2YoqmvwZ0g9/lifecycle/deactivate
+          hints:
+            allow:
+            - POST
+- name: NetworkZone / Delete a network zone
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/zones/{{zoneId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: NetworkZone / Activate a network zone
+  method: POST
+  url: "{{baseUrl}}/api/v1/zones/{{zoneId}}/lifecycle/activate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: NetworkZone / Deactivate a network zone
+  method: POST
+  url: "{{baseUrl}}/api/v1/zones/{{zoneId}}/lifecycle/deactivate"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

@@ -1,0 +1,54 @@
+openapi: 3.0.3
+info:
+  title: Sample API
+  description: A tiny OpenAPI 3 document for testing the importer
+paths:
+  /api/v1/users:
+    get:
+      summary: List all users
+      tags: [User]
+      parameters:
+        - name: limit
+          in: query
+          required: false
+    post:
+      summary: Create a user
+      tags: [User]
+      requestBody:
+        content:
+          application/json:
+            examples:
+              default:
+                $ref: "#/components/examples/create-user-request"
+  /api/v1/users/{userId}:
+    get:
+      summary: Get a user
+      tags: [User]
+    delete:
+      summary: Deactivate a user
+      tags: [User]
+      requestBody:
+        content:
+          application/json:
+            example:
+              sendEmail: false
+  /api/v1/groups:
+    get:
+      summary: List groups
+      tags: [Group]
+    post:
+      summary: Create a group
+      tags: [Group]
+      requestBody:
+        content:
+          application/json:
+            examples:
+              default:
+                $ref: "#/components/examples/create-user-request"
+components:
+  examples:
+    create-user-request:
+      value:
+        profile:
+          firstName: John
+          lastName: Doe

@@ -1,0 +1,17 @@
+---
+name: EmailCustomization
+requests:
+- name: EmailCustomization / Remove bounced emails
+  method: POST
+  url: "{{baseUrl}}/api/v1/org/email/bounces/remove-list"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      emailAddresses:
+      - name@company.com
+      - unknown.email@okta.com
+      - name@okta@com

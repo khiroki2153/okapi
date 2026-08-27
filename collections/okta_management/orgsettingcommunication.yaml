@@ -1,0 +1,21 @@
+---
+name: OrgSettingCommunication
+requests:
+- name: OrgSettingCommunication / Retrieve the Okta communication settings
+  method: GET
+  url: "{{baseUrl}}/api/v1/org/privacy/oktaCommunication"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OrgSettingCommunication / Opt in to Okta user communication emails
+  method: POST
+  url: "{{baseUrl}}/api/v1/org/privacy/oktaCommunication/optIn"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OrgSettingCommunication / Opt out of Okta user communication emails
+  method: POST
+  url: "{{baseUrl}}/api/v1/org/privacy/oktaCommunication/optOut"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

@@ -1,0 +1,32 @@
+---
+name: ProfileMapping
+requests:
+- name: ProfileMapping / List all profile mappings
+  method: GET
+  url: "{{baseUrl}}/api/v1/mappings"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ProfileMapping / Retrieve a profile mapping
+  method: GET
+  url: "{{baseUrl}}/api/v1/mappings/{{mappingId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ProfileMapping / Update a profile mapping
+  method: POST
+  url: "{{baseUrl}}/api/v1/mappings/{{mappingId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      properties:
+        fullName:
+          expression: user.firstName + user.lastName
+          pushStatus: PUSH
+        nickName:
+          expression: user.nickName
+          pushStatus: PUSH

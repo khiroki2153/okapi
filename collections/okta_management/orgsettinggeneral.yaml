@@ -1,0 +1,51 @@
+---
+name: OrgSettingGeneral
+requests:
+- name: OrgSettingGeneral / Retrieve the Org general settings
+  method: GET
+  url: "{{baseUrl}}/api/v1/org"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OrgSettingGeneral / Replace the Org general settings
+  method: PUT
+  url: "{{baseUrl}}/api/v1/org"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      address1: 100 1st St
+      address2: 6th floor
+      city: San Fransico
+      companyName: okta
+      country: United States
+      endUserSupportHelpURL: support.okta.com
+      phoneNumber: "+18887227871"
+      postalCode: '94105'
+      state: California
+      supportPhoneNumber: "+18887227871"
+      website: www.okta.com
+- name: OrgSettingGeneral / Update the Org general settings
+  method: POST
+  url: "{{baseUrl}}/api/v1/org"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      address1: 100 1st St
+      address2: 6th floor
+      city: San Fransico
+      companyName: okta
+      country: United States
+      endUserSupportHelpURL: support.okta.com
+      phoneNumber: "+18887227871"
+      postalCode: '94105'
+      state: California
+      supportPhoneNumber: "+18887227871"
+      website: www.okta.com

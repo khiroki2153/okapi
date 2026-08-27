@@ -1,0 +1,34 @@
+---
+name: OktaPersonalSettings
+requests:
+- name: OktaPersonalSettings / Replace the Okta Personal admin settings
+  method: PUT
+  url: "{{baseUrl}}/okta-personal-settings/api/v1/edit-feature"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      enableExportApps: true
+      enableEnduserEntryPoints: true
+- name: OktaPersonalSettings / List all blocked email domains
+  method: GET
+  url: "{{baseUrl}}/okta-personal-settings/api/v1/export-blocklists"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: OktaPersonalSettings / Replace the blocked email domains
+  method: PUT
+  url: "{{baseUrl}}/okta-personal-settings/api/v1/export-blocklists"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      domains:
+      - yahoo.com
+      - google.com

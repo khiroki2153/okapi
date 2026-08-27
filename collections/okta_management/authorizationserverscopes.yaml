@@ -1,0 +1,48 @@
+---
+name: AuthorizationServerScopes
+requests:
+- name: AuthorizationServerScopes / List all custom token scopes
+  method: GET
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/scopes"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AuthorizationServerScopes / Create a custom token scope
+  method: POST
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/scopes"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: car:drive
+      description: Drive car
+      consent: REQUIRED
+      displayName: Saml Jackson
+- name: AuthorizationServerScopes / Retrieve a custom token scope
+  method: GET
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/scopes/{{scopeId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: AuthorizationServerScopes / Replace a custom token scope
+  method: PUT
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/scopes/{{scopeId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      description: Order car
+      name: car:order
+      metadataPublish: ALL_CLIENTS
+- name: AuthorizationServerScopes / Delete a custom token scope
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/scopes/{{scopeId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

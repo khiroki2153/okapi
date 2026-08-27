@@ -1,0 +1,4 @@
+name: Sandbox
+variables:
+  baseUrl: https://dev-12345678.okta.com
+  apiToken: 00xxxxxxxxxxxxxxxxxxxxx

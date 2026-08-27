@@ -1,0 +1,51 @@
+---
+name: Subscription
+requests:
+- name: Subscription / List all subscriptions for a role
+  method: GET
+  url: "{{baseUrl}}/api/v1/roles/{{roleRef}}/subscriptions"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Subscription / Retrieve a subscription for a role
+  method: GET
+  url: "{{baseUrl}}/api/v1/roles/{{roleRef}}/subscriptions/{{notificationType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Subscription / Subscribe a role to a specific notification type
+  method: POST
+  url: "{{baseUrl}}/api/v1/roles/{{roleRef}}/subscriptions/{{notificationType}}/subscribe"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Subscription / Unsubscribe a role from a specific notification type
+  method: POST
+  url: "{{baseUrl}}/api/v1/roles/{{roleRef}}/subscriptions/{{notificationType}}/unsubscribe"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Subscription / List all subscriptions for a user
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/subscriptions"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Subscription / Retrieve a subscription for a user
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/subscriptions/{{notificationType}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Subscription / Subscribe a user to a specific notification type
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/subscriptions/{{notificationType}}/subscribe"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: Subscription / Unsubscribe a user from a specific notification type
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/subscriptions/{{notificationType}}/unsubscribe"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

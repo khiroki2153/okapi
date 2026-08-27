@@ -1,0 +1,37 @@
+---
+name: ApplicationFeatures
+requests:
+- name: ApplicationFeatures / List all features
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/features"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationFeatures / Retrieve a feature
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/features/{{featureName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ApplicationFeatures / Update a feature
+  method: PUT
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/features/{{featureName}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      create:
+        lifecycleCreate:
+          status: ENABLED
+      update:
+        lifecycleDeactivate:
+          status: ENABLED
+        profile:
+          status: ENABLED
+        password:
+          status: ENABLED
+          seed: RANDOM
+          change: CHANGE

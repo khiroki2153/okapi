@@ -1,0 +1,23 @@
+---
+name: ThreatInsight
+requests:
+- name: ThreatInsight / Retrieve the ThreatInsight configuration
+  method: GET
+  url: "{{baseUrl}}/api/v1/threats/configuration"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: ThreatInsight / Update the ThreatInsight configuration
+  method: POST
+  url: "{{baseUrl}}/api/v1/threats/configuration"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      action: audit
+      excludeZones:
+      - nzo1q7jEOsoCnoKcj0g4
+      - nzouagptWUz5DlLfM0g3

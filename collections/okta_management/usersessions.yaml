@@ -1,0 +1,9 @@
+---
+name: UserSessions
+requests:
+- name: UserSessions / Revoke all user sessions
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/sessions"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

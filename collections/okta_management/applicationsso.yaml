@@ -1,0 +1,9 @@
+---
+name: ApplicationSSO
+requests:
+- name: ApplicationSSO / Preview the application SAML metadata
+  method: GET
+  url: "{{baseUrl}}/api/v1/apps/{{appId}}/sso/saml/metadata"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

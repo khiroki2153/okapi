@@ -1,0 +1,43 @@
+---
+name: IdentityProviderUsers
+requests:
+- name: IdentityProviderUsers / List all users for IdP
+  method: GET
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}/users"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProviderUsers / Retrieve a user for IdP
+  method: GET
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}/users/{{userId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProviderUsers / Link a user to IdP
+  method: POST
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}/users/{{userId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content: {}
+- name: IdentityProviderUsers / Unlink a user from IdP
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}/users/{{userId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProviderUsers / List all tokens from OIDC IdP
+  method: GET
+  url: "{{baseUrl}}/api/v1/idps/{{idpId}}/users/{{userId}}/credentials/tokens"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: IdentityProviderUsers / List all IdPs for user
+  method: GET
+  url: "{{baseUrl}}/api/v1/users/{{id}}/idps"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

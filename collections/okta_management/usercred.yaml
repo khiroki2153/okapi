@@ -1,0 +1,71 @@
+---
+name: UserCred
+requests:
+- name: UserCred / Expire the password
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/expire_password"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserCred / Expire the password with a temporary password
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/expire_password_with_temp_password"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserCred / Reset a password
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{id}}/lifecycle/reset_password"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserCred / Update password
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/credentials/change_password"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      oldPassword:
+        value: tlpWENT2m
+      newPassword:
+        value: uTVM,TPw55
+      revokeSessions: true
+- name: UserCred / Update recovery question
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/credentials/change_recovery_question"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      password:
+        value: tlpWENT2m
+      recovery_question:
+        question: How many roads must a man walk down?
+        answer: forty two
+- name: UserCred / Start forgot password flow
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/credentials/forgot_password"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: UserCred / Reset password with recovery question
+  method: POST
+  url: "{{baseUrl}}/api/v1/users/{{userId}}/credentials/forgot_password_recovery_question"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      password:
+        value: uTVM,TPw55
+      recovery_question:
+        answer: Annie Oakley

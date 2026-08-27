@@ -1,0 +1,32 @@
+---
+name: RoleAssignmentClient
+requests:
+- name: RoleAssignmentClient / List all client role assignments
+  method: GET
+  url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentClient / Assign a client role
+  method: POST
+  url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      type: HELP_DESK_ADMIN
+- name: RoleAssignmentClient / Retrieve a client role
+  method: GET
+  url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: RoleAssignmentClient / Unassign a client role
+  method: DELETE
+  url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json

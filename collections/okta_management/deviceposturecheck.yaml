@@ -1,0 +1,79 @@
+---
+name: DevicePostureCheck
+requests:
+- name: DevicePostureCheck / List all device posture checks
+  method: GET
+  url: "{{baseUrl}}/api/v1/device-posture-checks"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: DevicePostureCheck / Create a device posture check
+  method: POST
+  url: "{{baseUrl}}/api/v1/device-posture-checks"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: Device posture check macOS
+      description: Query macOS devices to check if firewall is enabled
+      variableName: macOSFirewall
+      platform: MACOS
+      type: CUSTOM
+      mappingType: CHECKBOX
+      query: SELECT CASE WHEN global_state = 0 THEN 0 ELSE 1 END AS firewall_enabled
+        FROM alf;
+      remediationSettings:
+        message:
+          defaultI18nKey:
+          customText: It is our company policy that all devices must have a firewall
+            enabled.
+        link:
+          defaultUrl:
+          customUrl: example.myremediationurl.com/docs
+- name: DevicePostureCheck / List all default device posture checks
+  method: GET
+  url: "{{baseUrl}}/api/v1/device-posture-checks/default"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: DevicePostureCheck / Retrieve a device posture check
+  method: GET
+  url: "{{baseUrl}}/api/v1/device-posture-checks/{{postureCheckId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+- name: DevicePostureCheck / Replace a device posture check
+  method: PUT
+  url: "{{baseUrl}}/api/v1/device-posture-checks/{{postureCheckId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
+    Content-Type: application/json
+  body:
+    type: json
+    content:
+      name: Device posture check macOS
+      description: Query macOS devices to check if firewall is enabled
+      variableName: macOSFirewall
+      platform: MACOS
+      type: CUSTOM
+      mappingType: CHECKBOX
+      query: SELECT CASE WHEN global_state = 0 THEN 0 ELSE 1 END AS firewall_enabled
+        FROM alf;
+      remediationSettings:
+        message:
+          defaultI18nKey:
+          customText: It is our company policy that all devices must have a firewall
+            enabled.
+        link:
+          defaultUrl:
+          customUrl: example.myremediationurl.com/docs
+- name: DevicePostureCheck / Delete a device posture check
+  method: DELETE
+  url: "{{baseUrl}}/api/v1/device-posture-checks/{{postureCheckId}}"
+  headers:
+    Authorization: SSWS {{apiToken}}
+    Accept: application/json
