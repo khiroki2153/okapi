@@ -1,24 +1,19 @@
 ---
 name: Authenticator
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Authenticator / Retrieve the well-known app authenticator configuration
+- name: Retrieve the well-known app authenticator configuration
   method: GET
   url: "{{baseUrl}}/.well-known/app-authenticator-configuration"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / List all authenticators
+- name: List all authenticators
   method: GET
   url: "{{baseUrl}}/api/v1/authenticators"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Create an authenticator
+- name: Create an authenticator
   method: POST
   url: "{{baseUrl}}/api/v1/authenticators"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -33,18 +28,13 @@ requests:
           integrationKey: testIntegrationKey
           secretKey: testSecretKey
           host: https://api-xxxxxxxx.duosecurity.com
-- name: Authenticator / Retrieve an authenticator
+- name: Retrieve an authenticator
   method: GET
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Replace an authenticator
+- name: Replace an authenticator
   method: PUT
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -59,18 +49,13 @@ requests:
           integrationKey: testIntegrationKey
           secretKey: testSecretKey
           host: https://api-xxxxxxxx.duosecurity.com
-- name: Authenticator / List all custom AAGUIDs
+- name: List all custom AAGUIDs
   method: GET
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/aaguids"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Create a custom AAGUID
+- name: Create a custom AAGUID
   method: POST
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/aaguids"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -83,18 +68,13 @@ requests:
         hardwareProtected: false
       attestationRootCertificates:
       - x5c: X5C...
-- name: Authenticator / Retrieve a custom AAGUID
+- name: Retrieve a custom AAGUID
   method: GET
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/aaguids/{{aaguid}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Replace a custom AAGUID
+- name: Replace a custom AAGUID
   method: PUT
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/aaguids/{{aaguid}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -106,67 +86,38 @@ requests:
         hardwareProtected: false
       attestationRootCertificates:
       - x5c: X5C...
-- name: Authenticator / Delete a custom AAGUID
+- name: Delete a custom AAGUID
   method: DELETE
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/aaguids/{{aaguid}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Update a custom AAGUID
+- name: Update a custom AAGUID
   method: PATCH
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/aaguids/{{aaguid}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Activate an authenticator
+- name: Activate an authenticator
   method: POST
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Deactivate an authenticator
+- name: Deactivate an authenticator
   method: POST
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / List all methods of an authenticator
+- name: List all methods of an authenticator
   method: GET
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/methods"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Retrieve an authenticator method
+- name: Retrieve an authenticator method
   method: GET
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/methods/{{methodType}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Replace an authenticator method
+- name: Replace an authenticator method
   method: PUT
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/methods/{{methodType}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: Authenticator / Activate an authenticator method
+- name: Activate an authenticator method
   method: POST
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/methods/{{methodType}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Deactivate an authenticator method
+- name: Deactivate an authenticator method
   method: POST
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/methods/{{methodType}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Authenticator / Verify a Relying Party ID domain
+- name: Verify a Relying Party ID domain
   method: POST
   url: "{{baseUrl}}/api/v1/authenticators/{{authenticatorId}}/methods/{{webAuthnMethodType}}/verify-rp-id-domain"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

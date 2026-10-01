@@ -1,136 +1,87 @@
 ---
 name: CustomPages
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: CustomPages / Retrieve the error page sub-resources
+- name: Retrieve the error page sub-resources
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the customized error page
+- name: Retrieve the customized error page
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error/customized"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Replace the customized error page
+- name: Replace the customized error page
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error/customized"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomPages / Delete the customized error page
+- name: Delete the customized error page
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error/customized"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the default error page
+- name: Retrieve the default error page
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error/default"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the preview error page preview
+- name: Retrieve the preview error page preview
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error/preview"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Replace the preview error page
+- name: Replace the preview error page
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error/preview"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomPages / Delete the preview error page
+- name: Delete the preview error page
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/error/preview"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the sign-in page sub-resources
+- name: Retrieve the sign-in page sub-resources
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the customized sign-in page
+- name: Retrieve the customized sign-in page
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/customized"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Replace the customized sign-in page
+- name: Replace the customized sign-in page
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/customized"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomPages / Delete the customized sign-in page
+- name: Delete the customized sign-in page
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/customized"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the default sign-in page
+- name: Retrieve the default sign-in page
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/default"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the preview sign-in page preview
+- name: Retrieve the preview sign-in page preview
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/preview"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Replace the preview sign-in page
+- name: Replace the preview sign-in page
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/preview"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomPages / Delete the preview sign-in page
+- name: Delete the preview sign-in page
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/preview"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / List all Sign-In Widget versions
+- name: List all Sign-In Widget versions
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-in/widget-versions"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Retrieve the sign-out page settings
+- name: Retrieve the sign-out page settings
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-out/customized"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomPages / Replace the sign-out page settings
+- name: Replace the sign-out page settings
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/pages/sign-out/customized"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

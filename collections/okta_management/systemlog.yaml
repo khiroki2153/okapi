@@ -1,9 +1,9 @@
 ---
 name: SystemLog
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: SystemLog / List all System Log events
+- name: List all System Log events
   method: GET
   url: "{{baseUrl}}/api/v1/logs"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

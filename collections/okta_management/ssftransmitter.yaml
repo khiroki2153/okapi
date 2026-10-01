@@ -1,66 +1,49 @@
 ---
 name: SSFTransmitter
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: SSFTransmitter / Retrieve the SSF transmitter metadata
+- name: Retrieve the SSF transmitter metadata
   method: GET
   url: "{{baseUrl}}/.well-known/ssf-configuration"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFTransmitter / Retrieve the SSF stream configuration(s)
+- name: Retrieve the SSF stream configuration(s)
   method: GET
   url: "{{baseUrl}}/api/v1/ssf/stream"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFTransmitter / Replace an SSF stream
+- name: Replace an SSF stream
   method: PUT
   url: "{{baseUrl}}/api/v1/ssf/stream"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: SSFTransmitter / Create an SSF stream
+- name: Create an SSF stream
   method: POST
   url: "{{baseUrl}}/api/v1/ssf/stream"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: SSFTransmitter / Delete an SSF stream
+- name: Delete an SSF stream
   method: DELETE
   url: "{{baseUrl}}/api/v1/ssf/stream"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFTransmitter / Update an SSF stream
+- name: Update an SSF stream
   method: PATCH
   url: "{{baseUrl}}/api/v1/ssf/stream"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: SSFTransmitter / Retrieve the SSF stream status
+- name: Retrieve the SSF stream status
   method: GET
   url: "{{baseUrl}}/api/v1/ssf/stream/status"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFTransmitter / Verify an SSF stream
+- name: Verify an SSF stream
   method: POST
   url: "{{baseUrl}}/api/v1/ssf/stream/verification"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

@@ -1,9 +1,9 @@
 ---
 name: SSFSecurityEventToken
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: SSFSecurityEventToken / Publish a security event token
+- name: Publish a security event token
   method: POST
   url: "{{baseUrl}}/security/api/v1/security-events"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

@@ -1,18 +1,16 @@
 ---
 name: RoleCResourceSetResource
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RoleCResourceSetResource / List all resource set resources
+- name: List all resource set resources
   method: GET
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/resources"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleCResourceSetResource / Add a resource set resource with conditions
+- name: Add a resource set resource with conditions
   method: POST
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/resources"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -23,12 +21,10 @@ requests:
           okta:ORN:
           - orn:okta:idp:00o5rb5mt2H3d1TJd0h7:apps:0oa1014FmyZ2H0oRY0g4
           - orn:okta:idp:00o5rb5mt2H3d1TJd0h7:apps:slack
-- name: RoleCResourceSetResource / Add more resources to a resource set
+- name: Add more resources to a resource set
   method: PATCH
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/resources"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -36,18 +32,13 @@ requests:
       additions:
       - https://{yourOktaDomain}/api/v1/groups/00guaxWZ0AOa5NFAj0g3
       - https://{yourOktaDomain}/api/v1/groups/00gu67DU2qNCjNZYO0g3/users
-- name: RoleCResourceSetResource / Retrieve a resource set resource
+- name: Retrieve a resource set resource
   method: GET
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/resources/{{resourceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleCResourceSetResource / Replace the resource set resource conditions
+- name: Replace the resource set resource conditions
   method: PUT
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/resources/{{resourceId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -57,9 +48,6 @@ requests:
           okta:ORN:
           - orn:okta:idp:00o5rb5mt2H3d1TJd0h7:apps:0oa1014FmyZ2H0oRY0g4
           - orn:okta:idp:00o5rb5mt2H3d1TJd0h7:apps:slack
-- name: RoleCResourceSetResource / Delete a resource set resource
+- name: Delete a resource set resource
   method: DELETE
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}/resources/{{resourceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

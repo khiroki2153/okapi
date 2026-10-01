@@ -1,18 +1,16 @@
 ---
 name: ApplicationSSOPublicKeys
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationSSOPublicKeys / List all the OAuth 2.0 client JSON Web Keys
+- name: List all the OAuth 2.0 client JSON Web Keys
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/jwks"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Add a JSON Web Key
+- name: Add a JSON Web Key
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/jwks"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -25,67 +23,38 @@ requests:
       e: AQAB
       "n": AJncrzOrouIUCSMlRL0HU.....Kuine49_CEVR4GPn=
       status: ACTIVE
-- name: ApplicationSSOPublicKeys / Retrieve an OAuth 2.0 client JSON Web Key
+- name: Retrieve an OAuth 2.0 client JSON Web Key
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/jwks/{{keyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Delete an OAuth 2.0 client JSON Web Key
+- name: Delete an OAuth 2.0 client JSON Web Key
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/jwks/{{keyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Activate an OAuth 2.0 client JSON Web Key
+- name: Activate an OAuth 2.0 client JSON Web Key
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/jwks/{{keyId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Deactivate an OAuth 2.0 client JSON Web Key
+- name: Deactivate an OAuth 2.0 client JSON Web Key
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/jwks/{{keyId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / List all OAuth 2.0 client secrets
+- name: List all OAuth 2.0 client secrets
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/secrets"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Create an OAuth 2.0 client secret
+- name: Create an OAuth 2.0 client secret
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/secrets"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: ApplicationSSOPublicKeys / Retrieve an OAuth 2.0 client secret
+- name: Retrieve an OAuth 2.0 client secret
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/secrets/{{secretId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Delete an OAuth 2.0 client secret
+- name: Delete an OAuth 2.0 client secret
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/secrets/{{secretId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Activate an OAuth 2.0 client secret
+- name: Activate an OAuth 2.0 client secret
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/secrets/{{secretId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationSSOPublicKeys / Deactivate an OAuth 2.0 client secret
+- name: Deactivate an OAuth 2.0 client secret
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/credentials/secrets/{{secretId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

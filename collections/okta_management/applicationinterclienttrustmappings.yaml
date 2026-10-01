@@ -1,34 +1,24 @@
 ---
 name: ApplicationInterclientTrustMappings
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationInterclientTrustMappings / List all allowed apps for a target app
+- name: List all allowed apps for a target app
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/interclient-allowed-apps"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationInterclientTrustMappings / Create an allowed app mapping for a
-    target app
+- name: Create an allowed app mapping for a target app
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/interclient-allowed-apps"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       id: 0oa89ks1irGAcYwXw0g5
-- name: ApplicationInterclientTrustMappings / Delete an interclient trust mapping
+- name: Delete an interclient trust mapping
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/interclient-allowed-apps/{{allowedAppId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationInterclientTrustMappings / List all target apps for an allowed
-    app
+- name: List all target apps for an allowed app
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/interclient-target-apps"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

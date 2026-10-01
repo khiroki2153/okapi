@@ -1,18 +1,16 @@
 ---
 name: IdentityProvider
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: IdentityProvider / List all IdPs
+- name: List all IdPs
   method: GET
   url: "{{baseUrl}}/api/v1/idps"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProvider / Create an IdP
+- name: Create an IdP
   method: POST
   url: "{{baseUrl}}/api/v1/idps"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -44,18 +42,13 @@ requests:
           userNameTemplate:
             template: idpuser.email
           matchType: USERNAME
-- name: IdentityProvider / Retrieve an IdP
+- name: Retrieve an IdP
   method: GET
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProvider / Replace an IdP
+- name: Replace an IdP
   method: PUT
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -143,21 +136,12 @@ requests:
           hints:
             allow:
             - POST
-- name: IdentityProvider / Delete an IdP
+- name: Delete an IdP
   method: DELETE
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProvider / Activate an IdP
+- name: Activate an IdP
   method: POST
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProvider / Deactivate an IdP
+- name: Deactivate an IdP
   method: POST
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

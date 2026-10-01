@@ -1,18 +1,16 @@
 ---
 name: ApplicationUsers
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationUsers / List all application users
+- name: List all application users
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/users"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationUsers / Assign an application user
+- name: Assign an application user
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/users"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -21,18 +19,13 @@ requests:
       scope: USER
       credentials:
         userName: rae.cloud@example.com
-- name: ApplicationUsers / Retrieve an application user
+- name: Retrieve an application user
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/users/{{userId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationUsers / Update an application user
+- name: Update an application user
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/users/{{userId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -41,9 +34,6 @@ requests:
         userName: rae.cloud@example.com
         password:
           value: updatedP@55word
-- name: ApplicationUsers / Unassign an application user
+- name: Unassign an application user
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/users/{{userId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

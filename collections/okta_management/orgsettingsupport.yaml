@@ -1,73 +1,52 @@
 ---
 name: OrgSettingSupport
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: OrgSettingSupport / Retrieve Okta Aerial consent for your org
+- name: Retrieve Okta Aerial consent for your org
   method: GET
   url: "{{baseUrl}}/api/v1/org/privacy/aerial"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingSupport / Grant Okta Aerial access to your org
+- name: Grant Okta Aerial access to your org
   method: POST
   url: "{{baseUrl}}/api/v1/org/privacy/aerial/grant"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       accountId: 0200bs0617vvhv2v675mch1cukp
-- name: OrgSettingSupport / Revoke Okta Aerial access to your org
+- name: Revoke Okta Aerial access to your org
   method: POST
   url: "{{baseUrl}}/api/v1/org/privacy/aerial/revoke"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       accountId: 0200bs0617vvhv2v675mch1cukp
-- name: OrgSettingSupport / Retrieve the Okta Support settings
+- name: Retrieve the Okta Support settings
   method: GET
   url: "{{baseUrl}}/api/v1/org/privacy/oktaSupport"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingSupport / List all Okta Support cases
+- name: List all Okta Support cases
   method: GET
   url: "{{baseUrl}}/api/v1/org/privacy/oktaSupport/cases"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingSupport / Update an Okta Support case
+- name: Update an Okta Support case
   method: PATCH
   url: "{{baseUrl}}/api/v1/org/privacy/oktaSupport/cases/{{caseNumber}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       impersonation:
         status: ENABLED
-- name: OrgSettingSupport / Extend Okta Support access
+- name: Extend Okta Support access
   method: POST
   url: "{{baseUrl}}/api/v1/org/privacy/oktaSupport/extend"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingSupport / Grant Okta Support access
+- name: Grant Okta Support access
   method: POST
   url: "{{baseUrl}}/api/v1/org/privacy/oktaSupport/grant"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingSupport / Revoke Okta Support access
+- name: Revoke Okta Support access
   method: POST
   url: "{{baseUrl}}/api/v1/org/privacy/oktaSupport/revoke"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

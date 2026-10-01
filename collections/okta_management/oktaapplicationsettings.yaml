@@ -1,18 +1,16 @@
 ---
 name: OktaApplicationSettings
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: OktaApplicationSettings / Retrieve the Okta application settings
+- name: Retrieve the Okta application settings
   method: GET
   url: "{{baseUrl}}/api/v1/first-party-app-settings/{{appName}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OktaApplicationSettings / Replace the Okta application settings
+- name: Replace the Okta application settings
   method: PUT
   url: "{{baseUrl}}/api/v1/first-party-app-settings/{{appName}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

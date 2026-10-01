@@ -1,18 +1,16 @@
 ---
 name: AuthorizationServerPolicies
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AuthorizationServerPolicies / List all policies
+- name: List all policies
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerPolicies / Create a policy
+- name: Create a policy
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -27,18 +25,13 @@ requests:
         clients":
           include":
           - ALL_CLIENTS
-- name: AuthorizationServerPolicies / Retrieve a policy
+- name: Retrieve a policy
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerPolicies / Replace a policy
+- name: Replace a policy
   method: PUT
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -54,21 +47,12 @@ requests:
         clients":
           include":
           - ALL_CLIENTS
-- name: AuthorizationServerPolicies / Delete a policy
+- name: Delete a policy
   method: DELETE
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerPolicies / Activate a policy
+- name: Activate a policy
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerPolicies / Deactivate a policy
+- name: Deactivate a policy
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

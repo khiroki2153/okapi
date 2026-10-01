@@ -1,99 +1,63 @@
 ---
 name: AgentPools
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AgentPools / List all agent pools
+- name: List all agent pools
   method: GET
   url: "{{baseUrl}}/api/v1/agentPools"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / List all agent pool updates
+- name: List all agent pool updates
   method: GET
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Create an agent pool update
+- name: Create an agent pool update
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: AgentPools / Retrieve an agent pool update's settings
+- name: Retrieve an agent pool update's settings
   method: GET
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/settings"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Update an agent pool update settings
+- name: Update an agent pool update settings
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/settings"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: AgentPools / Retrieve an agent pool update by ID
+- name: Retrieve an agent pool update by ID
   method: GET
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Update an agent pool update by ID
+- name: Update an agent pool update by ID
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: AgentPools / Delete an agent pool update
+- name: Delete an agent pool update
   method: DELETE
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Activate an agent pool update
+- name: Activate an agent pool update
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Deactivate an agent pool update
+- name: Deactivate an agent pool update
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Pause an agent pool update
+- name: Pause an agent pool update
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}/pause"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Resume an agent pool update
+- name: Resume an agent pool update
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}/resume"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Retry an agent pool update
+- name: Retry an agent pool update
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}/retry"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AgentPools / Stop an agent pool update
+- name: Stop an agent pool update
   method: POST
   url: "{{baseUrl}}/api/v1/agentPools/{{poolId}}/updates/{{updateId}}/stop"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

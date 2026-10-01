@@ -1,24 +1,19 @@
 ---
 name: ApplicationFeatures
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationFeatures / List all features
+- name: List all features
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/features"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationFeatures / Retrieve a feature
+- name: Retrieve a feature
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/features/{{featureName}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationFeatures / Update a feature
+- name: Update a feature
   method: PUT
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/features/{{featureName}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

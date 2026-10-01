@@ -1,12 +1,13 @@
 ---
 name: WebAuthnPreregistration
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: WebAuthnPreregistration / Activate a preregistered WebAuthn factor
+- name: Activate a preregistered WebAuthn factor
   method: POST
   url: "{{baseUrl}}/webauthn-registration/api/v1/activate"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -26,12 +27,10 @@ requests:
         use: sig
         x: tJc-j5osUCP-75ihCOKsswTOj3XsekayG3x79K2ndyOIXu08gDMkvL8rks06tEAa
         "y": hfVGbQeG4l2orqenn-GATWwTm8tLqHFHuwfJp33CCNOMtYYsgkAEnW60ORzt4YV-
-- name: WebAuthnPreregistration / Enroll a preregistered WebAuthn factor
+- name: Enroll a preregistered WebAuthn factor
   method: POST
   url: "{{baseUrl}}/webauthn-registration/api/v1/enroll"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -47,12 +46,10 @@ requests:
         use: enc
         x: r6AzcX3OSiJk1yQaBVYiBOtzFS9gNSpMDPvnVvl0CAX7el1ZyzmPG_BZ7u8sqTmF
         "y": RxPyGH1Xg74E2f5AQGkkddzsvTNY1R3R7mXTEM5wQtr1Y7C4XHlvITNZfU6G
-- name: WebAuthnPreregistration / Generate a fulfillment request
+- name: Generate a fulfillment request
   method: POST
   url: "{{baseUrl}}/webauthn-registration/api/v1/initiate-fulfillment-request"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -63,12 +60,10 @@ requests:
       - productId: '55'
         customizationId: RXJN83
         inventoryProductId: '106'
-- name: WebAuthnPreregistration / Send a PIN to user
+- name: Send a PIN to user
   method: POST
   url: "{{baseUrl}}/webauthn-registration/api/v1/send-pin"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -76,22 +71,12 @@ requests:
       authenticatorEnrollmentId: fwf5ajzJEWqknX6lk0g4
       fulfillmentProvider: yubico
       userId: 00us2hPODQncCkxef0g3
-- name: WebAuthnPreregistration / List all WebAuthn preregistration factors
+- name: List all WebAuthn preregistration factors
   method: GET
   url: "{{baseUrl}}/webauthn-registration/api/v1/users/{{userId}}/enrollments"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: WebAuthnPreregistration / Delete a WebAuthn preregistration factor
+- name: Delete a WebAuthn preregistration factor
   method: DELETE
   url: "{{baseUrl}}/webauthn-registration/api/v1/users/{{userId}}/enrollments/{{authenticatorEnrollmentId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: WebAuthnPreregistration / Assign the fulfillment error status to a WebAuthn
-    preregistration factor
+- name: Assign the fulfillment error status to a WebAuthn preregistration factor
   method: POST
   url: "{{baseUrl}}/webauthn-registration/api/v1/users/{{userId}}/enrollments/{{authenticatorEnrollmentId}}/mark-error"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

@@ -1,18 +1,16 @@
 ---
 name: InlineHook
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: InlineHook / List all inline hooks
+- name: List all inline hooks
   method: GET
   url: "{{baseUrl}}/api/v1/inlineHooks"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: InlineHook / Create an inline hook
+- name: Create an inline hook
   method: POST
   url: "{{baseUrl}}/api/v1/inlineHooks"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -33,18 +31,13 @@ requests:
             type: HEADER
             key: Authorization
             value: my-shared-secret
-- name: InlineHook / Retrieve an inline hook
+- name: Retrieve an inline hook
   method: GET
   url: "{{baseUrl}}/api/v1/inlineHooks/{{inlineHookId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: InlineHook / Replace an inline hook
+- name: Replace an inline hook
   method: PUT
   url: "{{baseUrl}}/api/v1/inlineHooks/{{inlineHookId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -64,12 +57,10 @@ requests:
             type: HEADER
             key: Authorization
             value: my-shared-secret
-- name: InlineHook / Update an inline hook
+- name: Update an inline hook
   method: POST
   url: "{{baseUrl}}/api/v1/inlineHooks/{{inlineHookId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -89,18 +80,13 @@ requests:
             type: HEADER
             key: Authorization
             value: my-shared-secret
-- name: InlineHook / Delete an inline hook
+- name: Delete an inline hook
   method: DELETE
   url: "{{baseUrl}}/api/v1/inlineHooks/{{inlineHookId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: InlineHook / Execute an inline hook
+- name: Execute an inline hook
   method: POST
   url: "{{baseUrl}}/api/v1/inlineHooks/{{inlineHookId}}/execute"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -125,15 +111,9 @@ requests:
             password: Okta
         action:
           credential: UNVERIFIED
-- name: InlineHook / Activate an inline hook
+- name: Activate an inline hook
   method: POST
   url: "{{baseUrl}}/api/v1/inlineHooks/{{inlineHookId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: InlineHook / Deactivate an inline hook
+- name: Deactivate an inline hook
   method: POST
   url: "{{baseUrl}}/api/v1/inlineHooks/{{inlineHookId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

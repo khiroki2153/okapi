@@ -1,18 +1,16 @@
 ---
 name: UserRisk
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: UserRisk / Retrieve the user's risk
+- name: Retrieve the user's risk
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/risk"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserRisk / Upsert the user's risk
+- name: Upsert the user's risk
   method: PUT
   url: "{{baseUrl}}/api/v1/users/{{userId}}/risk"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

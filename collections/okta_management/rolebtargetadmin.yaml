@@ -1,63 +1,36 @@
 ---
 name: RoleBTargetAdmin
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RoleBTargetAdmin / List all admin role app targets
+- name: List all admin role app targets
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/catalog/apps"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Assign all apps as target to admin role
+- name: Assign all apps as target to admin role
   method: PUT
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/catalog/apps"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Assign an admin role app target
+- name: Assign an admin role app target
   method: PUT
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Unassign an admin role app target
+- name: Unassign an admin role app target
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Assign an admin role app instance target
+- name: Assign an admin role app instance target
   method: PUT
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}/{{appId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Unassign an admin role app instance target
+- name: Unassign an admin role app instance target
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}/{{appId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / List all admin role group targets
+- name: List all admin role group targets
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/groups"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Assign an admin role group target
+- name: Assign an admin role group target
   method: PUT
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Unassign an admin role group target
+- name: Unassign an admin role group target
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleAssignmentId}}/targets/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetAdmin / Retrieve a role target by assignment type
+- name: Retrieve a role target by assignment type
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/roles/{{roleIdOrEncodedRoleId}}/targets"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

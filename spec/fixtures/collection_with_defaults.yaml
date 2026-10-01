@@ -1,0 +1,28 @@
+name: Okta Users API (with collection-level defaults)
+headers:
+  Authorization: "SSWS {{apiToken}}"
+  Accept: application/json
+query:
+  limit: 25
+
+requests:
+  - name: List Users
+    method: GET
+    url: "{{baseUrl}}/api/v1/users"
+
+  - name: List Users Without Limit
+    method: GET
+    url: "{{baseUrl}}/api/v1/users"
+    query:
+      limit: 5
+
+  - name: Create User
+    method: POST
+    url: "{{baseUrl}}/api/v1/users"
+    headers:
+      Content-Type: application/json
+    body:
+      type: json
+      content:
+        profile:
+          firstName: John

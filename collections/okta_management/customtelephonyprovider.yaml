@@ -1,18 +1,16 @@
 ---
 name: CustomTelephonyProvider
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: CustomTelephonyProvider / List all custom telephony providers
+- name: List all custom telephony providers
   method: GET
   url: "{{baseUrl}}/api/v1/telephony-providers"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTelephonyProvider / Create a custom telephony provider
+- name: Create a custom telephony provider
   method: POST
   url: "{{baseUrl}}/api/v1/telephony-providers"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -26,24 +24,16 @@ requests:
           twilioPhoneNumber: "+1234567890"
         call:
           twilioVerifySid: example-verify-sid
-- name: CustomTelephonyProvider / Retrieve a custom telephony provider
+- name: Retrieve a custom telephony provider
   method: GET
   url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTelephonyProvider / Delete a custom telephony provider
+- name: Delete a custom telephony provider
   method: DELETE
   url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTelephonyProvider / Update a custom telephony provider credential
+- name: Update a custom telephony provider credential
   method: PATCH
   url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -56,31 +46,19 @@ requests:
           twilioPhoneNumber: "+1234567890"
         call:
           twilioVerifySid: updated-verify-sid
-- name: CustomTelephonyProvider / Activate a custom telephony provider
+- name: Activate a custom telephony provider
   method: POST
   url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTelephonyProvider / Deactivate a custom telephony provider
+- name: Deactivate a custom telephony provider
   method: POST
   url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTelephonyProvider / Set a custom telephony provider as a primary telephony
-    provider
+- name: Set a custom telephony provider as a primary telephony provider
   method: POST
   url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/setAsPrimary"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTelephonyProvider / Send a test message from a custom telephony provider
+- name: Send a test message from a custom telephony provider
   method: POST
   url: "{{baseUrl}}/api/v1/telephony-providers/{{customTelephonyProviderId}}/test"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

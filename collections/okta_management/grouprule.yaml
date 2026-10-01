@@ -1,18 +1,16 @@
 ---
 name: GroupRule
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: GroupRule / List all group rules
+- name: List all group rules
   method: GET
   url: "{{baseUrl}}/api/v1/groups/rules"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GroupRule / Create a group rule
+- name: Create a group rule
   method: POST
   url: "{{baseUrl}}/api/v1/groups/rules"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -33,18 +31,13 @@ requests:
         assignUserToGroups:
           groupIds:
           - 00gjitX9HqABSoqTB0g3
-- name: GroupRule / Retrieve a group rule
+- name: Retrieve a group rule
   method: GET
   url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GroupRule / Replace a group rule
+- name: Replace a group rule
   method: PUT
   url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -69,21 +62,12 @@ requests:
         assignUserToGroups:
           groupIds:
           - 00gjitX9HqABSoqTB0g3
-- name: GroupRule / Delete a group rule
+- name: Delete a group rule
   method: DELETE
   url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GroupRule / Activate a group rule
+- name: Activate a group rule
   method: POST
   url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GroupRule / Deactivate a group rule
+- name: Deactivate a group rule
   method: POST
   url: "{{baseUrl}}/api/v1/groups/rules/{{groupRuleId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

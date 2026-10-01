@@ -1,27 +1,18 @@
 ---
 name: ApplicationTokens
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationTokens / List all application refresh tokens
+- name: List all application refresh tokens
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationTokens / Revoke all application tokens
+- name: Revoke all application tokens
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationTokens / Retrieve an application token
+- name: Retrieve an application token
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/tokens/{{tokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationTokens / Revoke an application token
+- name: Revoke an application token
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/tokens/{{tokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

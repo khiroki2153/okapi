@@ -1,28 +1,24 @@
 ---
 name: Policy
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Policy / List all policies
+- name: List all policies
   method: GET
   url: "{{baseUrl}}/api/v1/policies"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Create a policy
+- name: Create a policy
   method: POST
   url: "{{baseUrl}}/api/v1/policies"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: Policy / Create a policy simulation
+- name: Create a policy simulation
   method: POST
   url: "{{baseUrl}}/api/v1/policies/simulate"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -45,92 +41,56 @@ requests:
           platform: IOS
           registered: true
           managed: true
-- name: Policy / Retrieve a policy
+- name: Retrieve a policy
   method: GET
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Replace a policy
+- name: Replace a policy
   method: PUT
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: Policy / Delete a policy
+- name: Delete a policy
   method: DELETE
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / List all apps mapped to a policy
+- name: List all apps mapped to a policy
   method: GET
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/app"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Clone an existing policy
+- name: Clone an existing policy
   method: POST
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/clone"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Activate a policy
+- name: Activate a policy
   method: POST
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Deactivate a policy
+- name: Deactivate a policy
   method: POST
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / List all resources mapped to a policy
+- name: List all resources mapped to a policy
   method: GET
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/mappings"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Map a resource to a policy
+- name: Map a resource to a policy
   method: POST
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/mappings"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: Policy / Retrieve a policy resource mapping
+- name: Retrieve a policy resource mapping
   method: GET
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/mappings/{{mappingId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Delete a policy resource mapping
+- name: Delete a policy resource mapping
   method: DELETE
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/mappings/{{mappingId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / List all policy rules
+- name: List all policy rules
   method: GET
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/rules"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Create a policy rule
+- name: Create a policy rule
   method: POST
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/rules"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -183,18 +143,13 @@ requests:
                 types:
                 - password
             type: ASSURANCE
-- name: Policy / Retrieve a policy rule
+- name: Retrieve a policy rule
   method: GET
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/rules/{{ruleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Replace a policy rule
+- name: Replace a policy rule
   method: PUT
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/rules/{{ruleId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -214,21 +169,12 @@ requests:
           keepMeSignedIn:
             postAuth: ALLOWED
             postAuthPromptFrequency: P30D
-- name: Policy / Delete a policy rule
+- name: Delete a policy rule
   method: DELETE
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/rules/{{ruleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Activate a policy rule
+- name: Activate a policy rule
   method: POST
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/rules/{{ruleId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Policy / Deactivate a policy rule
+- name: Deactivate a policy rule
   method: POST
   url: "{{baseUrl}}/api/v1/policies/{{policyId}}/rules/{{ruleId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

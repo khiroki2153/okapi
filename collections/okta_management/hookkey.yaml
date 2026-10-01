@@ -1,47 +1,34 @@
 ---
 name: HookKey
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: HookKey / List all keys
+- name: List all keys
   method: GET
   url: "{{baseUrl}}/api/v1/hook-keys"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: HookKey / Create a key
+- name: Create a key
   method: POST
   url: "{{baseUrl}}/api/v1/hook-keys"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: HookKey / Retrieve a public key
+- name: Retrieve a public key
   method: GET
   url: "{{baseUrl}}/api/v1/hook-keys/public/{{keyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: HookKey / Retrieve a key by ID
+- name: Retrieve a key by ID
   method: GET
   url: "{{baseUrl}}/api/v1/hook-keys/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: HookKey / Replace a key
+- name: Replace a key
   method: PUT
   url: "{{baseUrl}}/api/v1/hook-keys/{{id}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: HookKey / Delete a key
+- name: Delete a key
   method: DELETE
   url: "{{baseUrl}}/api/v1/hook-keys/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

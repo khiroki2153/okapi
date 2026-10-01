@@ -1,18 +1,16 @@
 ---
 name: GovernanceBundle
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: GovernanceBundle / List all governance bundles
+- name: List all governance bundles
   method: GET
   url: "{{baseUrl}}/api/v1/iam/governance/bundles"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GovernanceBundle / Create a governance bundle
+- name: Create a governance bundle
   method: POST
   url: "{{baseUrl}}/api/v1/iam/governance/bundles"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -21,18 +19,13 @@ requests:
       description: Group bundle for administrative access
       entitlements:
         role: GROUP_MEMBERSHIP_ADMIN
-- name: GovernanceBundle / Retrieve a governance bundle
+- name: Retrieve a governance bundle
   method: GET
   url: "{{baseUrl}}/api/v1/iam/governance/bundles/{{bundleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GovernanceBundle / Replace a governance bundle
+- name: Replace a governance bundle
   method: PUT
   url: "{{baseUrl}}/api/v1/iam/governance/bundles/{{bundleId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -41,39 +34,21 @@ requests:
       description: Group bundle for administrative access
       entitlements:
         role: GROUP_MEMBERSHIP_ADMIN
-- name: GovernanceBundle / Delete a governance bundle
+- name: Delete a governance bundle
   method: DELETE
   url: "{{baseUrl}}/api/v1/iam/governance/bundles/{{bundleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GovernanceBundle / List all entitlements for a governance bundle
+- name: List all entitlements for a governance bundle
   method: GET
   url: "{{baseUrl}}/api/v1/iam/governance/bundles/{{bundleId}}/entitlements"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GovernanceBundle / List all values for a governance bundle entitlement
+- name: List all values for a governance bundle entitlement
   method: GET
   url: "{{baseUrl}}/api/v1/iam/governance/bundles/{{bundleId}}/entitlements/{{entitlementId}}/values"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GovernanceBundle / Retrieve the Admin Console opt-in status
+- name: Retrieve the Admin Console opt-in status
   method: GET
   url: "{{baseUrl}}/api/v1/iam/governance/optIn"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GovernanceBundle / Opt in the Admin Console to entitlement management
+- name: Opt in the Admin Console to entitlement management
   method: POST
   url: "{{baseUrl}}/api/v1/iam/governance/optIn"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GovernanceBundle / Opt out the Admin Console from entitlement management
+- name: Opt out the Admin Console from entitlement management
   method: POST
   url: "{{baseUrl}}/api/v1/iam/governance/optOut"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

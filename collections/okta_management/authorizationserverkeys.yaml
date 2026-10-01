@@ -1,24 +1,19 @@
 ---
 name: AuthorizationServerKeys
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AuthorizationServerKeys / List all credential keys
+- name: List all credential keys
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/credentials/keys"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerKeys / Retrieve an authorization server key
+- name: Retrieve an authorization server key
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/credentials/keys/{{keyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerKeys / Rotate all credential keys
+- name: Rotate all credential keys
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/credentials/lifecycle/keyRotate"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

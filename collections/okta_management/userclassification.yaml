@@ -1,18 +1,16 @@
 ---
 name: UserClassification
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: UserClassification / Retrieve a user's classification
+- name: Retrieve a user's classification
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/classification"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserClassification / Replace the user's classification
+- name: Replace the user's classification
   method: PUT
   url: "{{baseUrl}}/api/v1/users/{{userId}}/classification"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

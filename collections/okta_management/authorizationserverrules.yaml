@@ -1,18 +1,16 @@
 ---
 name: AuthorizationServerRules
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AuthorizationServerRules / List all policy rules
+- name: List all policy rules
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerRules / Create a policy rule
+- name: Create a policy rule
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -41,18 +39,13 @@ requests:
           refreshTokenWindowMinutes: 10080
           inlineHook:
             id: cal4egvp1mbMldrYN0g7
-- name: AuthorizationServerRules / Retrieve a policy rule
+- name: Retrieve a policy rule
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerRules / Replace a policy rule
+- name: Replace a policy rule
   method: PUT
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -82,21 +75,12 @@ requests:
           refreshTokenWindowMinutes: 10080
           inlineHook:
             id: cal4egvp1mbMldrYN0g7
-- name: AuthorizationServerRules / Delete a policy rule
+- name: Delete a policy rule
   method: DELETE
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerRules / Activate a policy rule
+- name: Activate a policy rule
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerRules / Deactivate a policy rule
+- name: Deactivate a policy rule
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/policies/{{policyId}}/rules/{{ruleId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

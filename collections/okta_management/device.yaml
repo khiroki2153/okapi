@@ -1,63 +1,36 @@
 ---
 name: Device
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Device / List all devices
+- name: List all devices
   method: GET
   url: "{{baseUrl}}/api/v1/devices"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / Retrieve a device
+- name: Retrieve a device
   method: GET
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / Delete a device
+- name: Delete a device
   method: DELETE
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / Activate a device
+- name: Activate a device
   method: POST
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / Deactivate a device
+- name: Deactivate a device
   method: POST
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / Suspend a Device
+- name: Suspend a Device
   method: POST
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}/lifecycle/suspend"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / Unsuspend a Device
+- name: Unsuspend a Device
   method: POST
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}/lifecycle/unsuspend"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / List all OS accounts for a device
+- name: List all OS accounts for a device
   method: GET
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}/os-accounts"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / Retrieve an OS account
+- name: Retrieve an OS account
   method: GET
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}/os-accounts/{{osAccountId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Device / List all users for a device
+- name: List all users for a device
   method: GET
   url: "{{baseUrl}}/api/v1/devices/{{deviceId}}/users"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

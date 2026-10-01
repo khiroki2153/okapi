@@ -1,65 +1,43 @@
 ---
 name: Group
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Group / List all groups
+- name: List all groups
   method: GET
   url: "{{baseUrl}}/api/v1/groups"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Group / Add a group
+- name: Add a group
   method: POST
   url: "{{baseUrl}}/api/v1/groups"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: Group / Retrieve a group
+- name: Retrieve a group
   method: GET
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Group / Replace a group
+- name: Replace a group
   method: PUT
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: Group / Delete a group
+- name: Delete a group
   method: DELETE
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Group / List all assigned apps
+- name: List all assigned apps
   method: GET
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/apps"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Group / List all member users
+- name: List all member users
   method: GET
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/users"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Group / Assign a user to a group
+- name: Assign a user to a group
   method: PUT
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/users/{{userId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Group / Unassign a user from a group
+- name: Unassign a user from a group
   method: DELETE
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/users/{{userId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

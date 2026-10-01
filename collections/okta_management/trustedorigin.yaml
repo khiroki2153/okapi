@@ -1,18 +1,16 @@
 ---
 name: TrustedOrigin
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: TrustedOrigin / List all trusted origins
+- name: List all trusted origins
   method: GET
   url: "{{baseUrl}}/api/v1/trustedOrigins"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: TrustedOrigin / Create a trusted origin
+- name: Create a trusted origin
   method: POST
   url: "{{baseUrl}}/api/v1/trustedOrigins"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -22,18 +20,13 @@ requests:
       scopes:
       - type: CORS
       - type: REDIRECT
-- name: TrustedOrigin / Retrieve a trusted origin
+- name: Retrieve a trusted origin
   method: GET
   url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: TrustedOrigin / Replace a trusted origin
+- name: Replace a trusted origin
   method: PUT
   url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -63,21 +56,12 @@ requests:
             hints:
               allow:
               - POST
-- name: TrustedOrigin / Delete a trusted origin
+- name: Delete a trusted origin
   method: DELETE
   url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: TrustedOrigin / Activate a trusted origin
+- name: Activate a trusted origin
   method: POST
   url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: TrustedOrigin / Deactivate a trusted origin
+- name: Deactivate a trusted origin
   method: POST
   url: "{{baseUrl}}/api/v1/trustedOrigins/{{trustedOriginId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

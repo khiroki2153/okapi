@@ -1,21 +1,15 @@
 ---
 name: OrgSettingCustomization
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: OrgSettingCustomization / Retrieve the org preferences
+- name: Retrieve the org preferences
   method: GET
   url: "{{baseUrl}}/api/v1/org/preferences"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingCustomization / Set the hide dashboard footer preference
+- name: Set the hide dashboard footer preference
   method: POST
   url: "{{baseUrl}}/api/v1/org/preferences/hideEndUserFooter"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingCustomization / Set the show dashboard footer preference
+- name: Set the show dashboard footer preference
   method: POST
   url: "{{baseUrl}}/api/v1/org/preferences/showEndUserFooter"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

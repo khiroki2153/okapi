@@ -1,24 +1,19 @@
 ---
 name: Themes
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Themes / List all themes
+- name: List all themes
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Themes / Retrieve a theme
+- name: Retrieve a theme
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Themes / Replace a theme
+- name: Replace a theme
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -32,39 +27,21 @@ requests:
       errorPageTouchPointVariant: OKTA_DEFAULT
       emailTemplateTouchPointVariant: OKTA_DEFAULT
       loadingPageTouchPointVariant: OKTA_DEFAULT
-- name: Themes / Upload the background image
+- name: Upload the background image
   method: POST
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/background-image"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Themes / Delete the background image
+- name: Delete the background image
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/background-image"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Themes / Upload the favicon
+- name: Upload the favicon
   method: POST
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/favicon"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Themes / Delete the favicon
+- name: Delete the favicon
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/favicon"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Themes / Upload the logo
+- name: Upload the logo
   method: POST
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/logo"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Themes / Delete the logo
+- name: Delete the logo
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/themes/{{themeId}}/logo"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

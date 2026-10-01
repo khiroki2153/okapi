@@ -1,18 +1,16 @@
 ---
 name: Realm
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Realm / List all realms
+- name: List all realms
   method: GET
   url: "{{baseUrl}}/api/v1/realms"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Realm / Create a realm
+- name: Create a realm
   method: POST
   url: "{{baseUrl}}/api/v1/realms"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -23,18 +21,13 @@ requests:
         domains:
         - atko.com
         - user.com
-- name: Realm / Retrieve a realm
+- name: Retrieve a realm
   method: GET
   url: "{{baseUrl}}/api/v1/realms/{{realmId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Realm / Replace the realm profile
+- name: Replace the realm profile
   method: PUT
   url: "{{baseUrl}}/api/v1/realms/{{realmId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -45,9 +38,6 @@ requests:
         domains:
         - atko.com
         - user.com
-- name: Realm / Delete a realm
+- name: Delete a realm
   method: DELETE
   url: "{{baseUrl}}/api/v1/realms/{{realmId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

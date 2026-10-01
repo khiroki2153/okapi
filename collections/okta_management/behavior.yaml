@@ -1,57 +1,41 @@
 ---
 name: Behavior
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Behavior / List all behavior detection rules
+- name: List all behavior detection rules
   method: GET
   url: "{{baseUrl}}/api/v1/behaviors"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Behavior / Create a behavior detection rule
+- name: Create a behavior detection rule
   method: POST
   url: "{{baseUrl}}/api/v1/behaviors"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       name: My Behavior Rule
       type: VELOCITY
-- name: Behavior / Retrieve a behavior detection rule
+- name: Retrieve a behavior detection rule
   method: GET
   url: "{{baseUrl}}/api/v1/behaviors/{{behaviorId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Behavior / Replace a behavior detection rule
+- name: Replace a behavior detection rule
   method: PUT
   url: "{{baseUrl}}/api/v1/behaviors/{{behaviorId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       name: My Behavior Rule
       type: VELOCITY
-- name: Behavior / Delete a behavior detection rule
+- name: Delete a behavior detection rule
   method: DELETE
   url: "{{baseUrl}}/api/v1/behaviors/{{behaviorId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Behavior / Activate a behavior detection rule
+- name: Activate a behavior detection rule
   method: POST
   url: "{{baseUrl}}/api/v1/behaviors/{{behaviorId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Behavior / Deactivate a behavior detection rule
+- name: Deactivate a behavior detection rule
   method: POST
   url: "{{baseUrl}}/api/v1/behaviors/{{behaviorId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

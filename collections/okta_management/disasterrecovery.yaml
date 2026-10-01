@@ -1,39 +1,32 @@
 ---
 name: DisasterRecovery
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: DisasterRecovery / Start the failback of your org
+- name: Start the failback of your org
   method: POST
   url: "{{baseUrl}}/api/v1/dr/failback"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       domains:
       - yourOktaDomain.okta.com
-- name: DisasterRecovery / Start the failover of your org
+- name: Start the failover of your org
   method: POST
   url: "{{baseUrl}}/api/v1/dr/failover"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       domains:
       - yourOktaDomain.okta.com
-- name: DisasterRecovery / Retrieve the disaster recovery status for all domains
+- name: Retrieve the disaster recovery status for all domains
   method: GET
   url: "{{baseUrl}}/api/v1/dr/status"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: DisasterRecovery / Retrieve the disaster recovery status for a domain
+- name: Retrieve the disaster recovery status for a domain
   method: GET
   url: "{{baseUrl}}/api/v1/dr/status/{{domain}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

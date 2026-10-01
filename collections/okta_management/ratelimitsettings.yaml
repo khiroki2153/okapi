@@ -1,52 +1,40 @@
 ---
 name: RateLimitSettings
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RateLimitSettings / Retrieve the rate limit admin notification settings
+- name: Retrieve the rate limit admin notification settings
   method: GET
   url: "{{baseUrl}}/api/v1/rate-limit-settings/admin-notifications"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RateLimitSettings / Replace the rate limit admin notification settings
+- name: Replace the rate limit admin notification settings
   method: PUT
   url: "{{baseUrl}}/api/v1/rate-limit-settings/admin-notifications"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       notificationsEnabled: true
-- name: RateLimitSettings / Retrieve the per-client rate limit settings
+- name: Retrieve the per-client rate limit settings
   method: GET
   url: "{{baseUrl}}/api/v1/rate-limit-settings/per-client"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RateLimitSettings / Replace the per-client rate limit settings
+- name: Replace the per-client rate limit settings
   method: PUT
   url: "{{baseUrl}}/api/v1/rate-limit-settings/per-client"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       defaultMode: ENFORCE
-- name: RateLimitSettings / Retrieve the rate limit warning threshold percentage
+- name: Retrieve the rate limit warning threshold percentage
   method: GET
   url: "{{baseUrl}}/api/v1/rate-limit-settings/warning-threshold"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RateLimitSettings / Replace the rate limit warning threshold percentage
+- name: Replace the rate limit warning threshold percentage
   method: PUT
   url: "{{baseUrl}}/api/v1/rate-limit-settings/warning-threshold"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

@@ -15,6 +15,10 @@ module Okapi
     # so it isn't Okta-specific.
     module OpenApi
       HTTP_METHODS = %w[get put post delete options head patch].freeze
+      # Every operation authenticates the same way, so this lives once at
+      # collection level (see Okapi::Collection header inheritance) instead
+      # of being repeated on every one of the hundreds of generated requests.
+      COMMON_HEADERS = { "Authorization" => "SSWS {{apiToken}}", "Accept" => "application/json" }.freeze
 
       module_function
 
@@ -24,13 +28,14 @@ module Okapi
         each_operation(spec) do |path, method, operation, tags|
           next if tag && !tags.include?(tag)
 
-          requests << convert_operation(spec, path, method, operation, tags)
+          requests << convert_operation(spec, path, method, operation, tags.first, name_prefix: true)
         end
 
         deep_dup(
           {
             "name" => spec.dig("info", "title") || "Imported API",
             "description" => spec.dig("info", "description"),
+            "headers" => COMMON_HEADERS,
             "requests" => requests
           }.compact
         )
@@ -40,16 +45,19 @@ module Okapi
       # operation with its resource, e.g. "User", "Group", "Application" —
       # the same split developer.okta.com's own API reference uses), so a
       # sprawling spec becomes one right-sized collection per resource
-      # instead of a single unwieldy file.
+      # instead of a single unwieldy file. Request names skip the tag prefix
+      # `import` uses, since the containing file already says which tag
+      # this is.
       def import_grouped_by_tag(source)
         spec = load_spec(source)
         grouped = Hash.new { |h, k| h[k] = [] }
         each_operation(spec) do |path, method, operation, tags|
-          grouped[tags.first || "Untagged"] << convert_operation(spec, path, method, operation, tags)
+          tag = tags.first || "Untagged"
+          grouped[tag] << convert_operation(spec, path, method, operation, tag, name_prefix: false)
         end
 
         result = grouped.each_with_object({}) do |(tag, requests), out|
-          out[tag] = { "name" => tag, "requests" => requests }
+          out[tag] = { "name" => tag, "headers" => COMMON_HEADERS, "requests" => requests }
         end
         deep_dup(result)
       end
@@ -70,27 +78,21 @@ module Okapi
         end
       end
 
-      def convert_operation(spec, path, method, operation, tags)
+      def convert_operation(spec, path, method, operation, tag, name_prefix:)
+        spec_body = request_body_for(spec, operation)
         title = operation["summary"] || operation["operationId"] || "#{method.upcase} #{path}"
-        body = request_body_for(spec, operation)
 
         {
-          "name" => [tags.first, title].compact.join(" / "),
+          "name" => name_prefix ? [tag, title].compact.join(" / ") : title,
           "method" => method.upcase,
           "url" => "{{baseUrl}}#{templated_path(path)}",
-          "headers" => headers_for(body),
-          "body" => body
+          "headers" => spec_body ? { "Content-Type" => "application/json" } : nil,
+          "body" => spec_body
         }.compact
       end
 
       def templated_path(path)
         path.gsub(/\{([^}]+)\}/) { "{{#{Regexp.last_match(1)}}}" }
-      end
-
-      def headers_for(body)
-        headers = { "Authorization" => "SSWS {{apiToken}}", "Accept" => "application/json" }
-        headers["Content-Type"] = "application/json" if body
-        headers
       end
 
       def request_body_for(spec, operation)
@@ -118,7 +120,7 @@ module Okapi
 
       # Two things make the same object show up more than once in the result:
       # Ruby's frozen_string_literal caches identical literals at a given
-      # call site (every generated "Authorization" header is the *same*
+      # call site (every generated "Content-Type" header is the *same*
       # String instance), and multiple operations can resolve the exact same
       # $ref'd example object. Either way YAML.dump would emit anchors/aliases
       # for the shared object — which means hand-editing one imported

@@ -1,53 +1,31 @@
 ---
 name: AssociatedDomainCustomizations
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AssociatedDomainCustomizations / Retrieve the customized apple-app-site-association
-    URI content
+- name: Retrieve the customized apple-app-site-association URI content
   method: GET
   url: "{{baseUrl}}/.well-known/apple-app-site-association"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AssociatedDomainCustomizations / Retrieve the customized assetlinks.json URI
-    content
+- name: Retrieve the customized assetlinks.json URI content
   method: GET
   url: "{{baseUrl}}/.well-known/assetlinks.json"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AssociatedDomainCustomizations / Retrieve the customized webauthn URI content
+- name: Retrieve the customized webauthn URI content
   method: GET
   url: "{{baseUrl}}/.well-known/webauthn"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AssociatedDomainCustomizations / Retrieve all the well-known URIs
+- name: Retrieve all the well-known URIs
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/well-known-uris"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AssociatedDomainCustomizations / Retrieve the well-known URI of a specific
-    brand
+- name: Retrieve the well-known URI of a specific brand
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/well-known-uris/{{path}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AssociatedDomainCustomizations / Retrieve the customized content of the specified
-    well-known URI
+- name: Retrieve the customized content of the specified well-known URI
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/well-known-uris/{{path}}/customized"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AssociatedDomainCustomizations / Replace the customized well-known URI of
-    the specific path
+- name: Replace the customized well-known URI of the specific path
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/well-known-uris/{{path}}/customized"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

@@ -1,34 +1,21 @@
 ---
 name: AuthorizationServerClients
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AuthorizationServerClients / List all client resources for an authorization
-    server
+- name: List all client resources for an authorization server
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/clients"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerClients / List all refresh tokens for a client
+- name: List all refresh tokens for a client
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/clients/{{clientId}}/tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerClients / Revoke all refresh tokens for a client
+- name: Revoke all refresh tokens for a client
   method: DELETE
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/clients/{{clientId}}/tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerClients / Retrieve a refresh token for a client
+- name: Retrieve a refresh token for a client
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/clients/{{clientId}}/tokens/{{tokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerClients / Revoke a refresh token for a client
+- name: Revoke a refresh token for a client
   method: DELETE
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/clients/{{clientId}}/tokens/{{tokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

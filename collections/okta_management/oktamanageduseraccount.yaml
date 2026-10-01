@@ -1,18 +1,16 @@
 ---
 name: OktaManagedUserAccount
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: OktaManagedUserAccount / List all Okta managed user accounts
+- name: List all Okta managed user accounts
   method: GET
   url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OktaManagedUserAccount / Create an Okta managed user account
+- name: Create an Okta managed user account
   method: POST
   url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -24,24 +22,16 @@ requests:
       - 00u22t59Q0aHbNEXi1h8
       ownerGroupIds:
       - 00g57qp78yZT2XBA40g7
-- name: OktaManagedUserAccount / Retrieve an Okta managed user account
+- name: Retrieve an Okta managed user account
   method: GET
   url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OktaManagedUserAccount / Delete an Okta managed user account
+- name: Delete an Okta managed user account
   method: DELETE
   url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OktaManagedUserAccount / Update an Okta managed user account
+- name: Update an Okta managed user account
   method: PATCH
   url: "{{baseUrl}}/privileged-access/api/v1/okta-service-accounts/{{id}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

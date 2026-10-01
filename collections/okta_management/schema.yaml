@@ -1,18 +1,16 @@
 ---
 name: Schema
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Schema / Retrieve the default app user schema for an app
+- name: Retrieve the default app user schema for an app
   method: GET
   url: "{{baseUrl}}/api/v1/meta/schemas/apps/{{appId}}/default"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Schema / Update the app user profile schema for an app
+- name: Update the app user profile schema for an app
   method: POST
   url: "{{baseUrl}}/api/v1/meta/schemas/apps/{{appId}}/default"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -31,18 +29,13 @@ requests:
               minLength: 1
               maxLength: 20
           required: []
-- name: Schema / Retrieve the default group schema
+- name: Retrieve the default group schema
   method: GET
   url: "{{baseUrl}}/api/v1/meta/schemas/group/default"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Schema / Update the group profile schema
+- name: Update the group profile schema
   method: POST
   url: "{{baseUrl}}/api/v1/meta/schemas/group/default"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -63,30 +56,19 @@ requests:
               - principal: SELF
                 action: READ_WRITE
           required: []
-- name: Schema / List the log stream schemas
+- name: List the log stream schemas
   method: GET
   url: "{{baseUrl}}/api/v1/meta/schemas/logStream"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Schema / Retrieve the log stream schema for the schema type
+- name: Retrieve the log stream schema for the schema type
   method: GET
   url: "{{baseUrl}}/api/v1/meta/schemas/logStream/{{logStreamType}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Schema / Retrieve a user schema
+- name: Retrieve a user schema
   method: GET
   url: "{{baseUrl}}/api/v1/meta/schemas/user/{{schemaId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Schema / Update a user schema
+- name: Update a user schema
   method: POST
   url: "{{baseUrl}}/api/v1/meta/schemas/user/{{schemaId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

@@ -1,18 +1,16 @@
 ---
 name: UserFactor
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: UserFactor / List all YubiKey OTP tokens
+- name: List all YubiKey OTP tokens
   method: GET
   url: "{{baseUrl}}/api/v1/org/factors/yubikey_token/tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / Upload a YubiKey OTP seed
+- name: Upload a YubiKey OTP seed
   method: POST
   url: "{{baseUrl}}/api/v1/org/factors/yubikey_token/tokens"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -21,24 +19,16 @@ requests:
       publicId: ccccccijgibu
       privateId: b74be6169486
       aesKey: 1fcc6d8ce39bf1604e0b17f3e0a11067
-- name: UserFactor / Retrieve a YubiKey OTP token
+- name: Retrieve a YubiKey OTP token
   method: GET
   url: "{{baseUrl}}/api/v1/org/factors/yubikey_token/tokens/{{tokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / List all enrolled factors
+- name: List all enrolled factors
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / Enroll a factor
+- name: Enroll a factor
   method: POST
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -51,47 +41,31 @@ requests:
           profile:
             question: disliked_food
             answer: mayonnaise
-- name: UserFactor / List all supported factors
+- name: List all supported factors
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/catalog"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / List all supported security questions
+- name: List all supported security questions
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/questions"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / Retrieve a factor
+- name: Retrieve a factor
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/{{factorId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / Unenroll a factor
+- name: Unenroll a factor
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/{{factorId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / Activate a factor
+- name: Activate a factor
   method: POST
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/{{factorId}}/lifecycle/activate"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       passCode: '123456'
-- name: UserFactor / Resend a factor enrollment
+- name: Resend a factor enrollment
   method: POST
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/{{factorId}}/resend"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -100,18 +74,13 @@ requests:
       provider: OKTA
       profile:
         phoneNumber: "+1-555-415-1337"
-- name: UserFactor / Retrieve a factor transaction status
+- name: Retrieve a factor transaction status
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/{{factorId}}/transactions/{{transactionId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserFactor / Verify a factor
+- name: Verify a factor
   method: POST
   url: "{{baseUrl}}/api/v1/users/{{userId}}/factors/{{factorId}}/verify"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

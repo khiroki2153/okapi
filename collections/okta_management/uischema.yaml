@@ -1,18 +1,16 @@
 ---
 name: UISchema
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: UISchema / List all UI schemas
+- name: List all UI schemas
   method: GET
   url: "{{baseUrl}}/api/v1/meta/uischemas"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UISchema / Create a UI schema
+- name: Create a UI schema
   method: POST
   url: "{{baseUrl}}/api/v1/meta/uischemas"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -37,18 +35,13 @@ requests:
             format: text
         buttonLabel: Submit
         label: Sign in
-- name: UISchema / Retrieve a UI schema
+- name: Retrieve a UI schema
   method: GET
   url: "{{baseUrl}}/api/v1/meta/uischemas/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UISchema / Replace a UI schema
+- name: Replace a UI schema
   method: PUT
   url: "{{baseUrl}}/api/v1/meta/uischemas/{{id}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -73,9 +66,6 @@ requests:
             format: text
         buttonLabel: Submit
         label: Sign in
-- name: UISchema / Delete a UI schema
+- name: Delete a UI schema
   method: DELETE
   url: "{{baseUrl}}/api/v1/meta/uischemas/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

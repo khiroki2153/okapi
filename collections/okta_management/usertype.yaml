@@ -1,18 +1,16 @@
 ---
 name: UserType
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: UserType / List all user types
+- name: List all user types
   method: GET
   url: "{{baseUrl}}/api/v1/meta/types/user"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserType / Create a user type
+- name: Create a user type
   method: POST
   url: "{{baseUrl}}/api/v1/meta/types/user"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -20,18 +18,13 @@ requests:
       description: A new custom user type
       displayName: New user type
       name: newUserType
-- name: UserType / Retrieve a user type
+- name: Retrieve a user type
   method: GET
   url: "{{baseUrl}}/api/v1/meta/types/user/{{typeId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserType / Replace a user type
+- name: Replace a user type
   method: PUT
   url: "{{baseUrl}}/api/v1/meta/types/user/{{typeId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -39,20 +32,15 @@ requests:
       displayName: Replacement Display Name
       description: Replacement description
       name: newUserType
-- name: UserType / Update a user type
+- name: Update a user type
   method: POST
   url: "{{baseUrl}}/api/v1/meta/types/user/{{typeId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       displayName: Updated Display Name
-- name: UserType / Delete a user type
+- name: Delete a user type
   method: DELETE
   url: "{{baseUrl}}/api/v1/meta/types/user/{{typeId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

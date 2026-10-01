@@ -1,35 +1,28 @@
 ---
 name: Brands
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Brands / List all brands
+- name: List all brands
   method: GET
   url: "{{baseUrl}}/api/v1/brands"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Brands / Create a brand
+- name: Create a brand
   method: POST
   url: "{{baseUrl}}/api/v1/brands"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       name: My Awesome Brand
-- name: Brands / Retrieve a brand
+- name: Retrieve a brand
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Brands / Replace a brand
+- name: Replace a brand
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -44,15 +37,9 @@ requests:
         appInstanceId: 0oa114iNkrcN6aR680g4
         appLinkName:
         classicApplicationUri:
-- name: Brands / Delete a brand
+- name: Delete a brand
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Brands / List all domains associated with a brand
+- name: List all domains associated with a brand
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/domains"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

@@ -1,18 +1,16 @@
 ---
 name: ApiServiceIntegrations
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApiServiceIntegrations / List all API service integration instances
+- name: List all API service integration instances
   method: GET
   url: "{{baseUrl}}/integrations/api/v1/api-services"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiServiceIntegrations / Create an API service integration instance
+- name: Create an API service integration instance
   method: POST
   url: "{{baseUrl}}/integrations/api/v1/api-services"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -22,45 +20,24 @@ requests:
       - okta.logs.read
       - okta.groups.read
       - okta.users.read
-- name: ApiServiceIntegrations / Retrieve an API service integration instance
+- name: Retrieve an API service integration instance
   method: GET
   url: "{{baseUrl}}/integrations/api/v1/api-services/{{apiServiceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiServiceIntegrations / Delete an API service integration instance
+- name: Delete an API service integration instance
   method: DELETE
   url: "{{baseUrl}}/integrations/api/v1/api-services/{{apiServiceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiServiceIntegrations / List all API service integration instance secrets
+- name: List all API service integration instance secrets
   method: GET
   url: "{{baseUrl}}/integrations/api/v1/api-services/{{apiServiceId}}/credentials/secrets"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiServiceIntegrations / Create an API service integration instance secret
+- name: Create an API service integration instance secret
   method: POST
   url: "{{baseUrl}}/integrations/api/v1/api-services/{{apiServiceId}}/credentials/secrets"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiServiceIntegrations / Delete an API service integration instance secret
+- name: Delete an API service integration instance secret
   method: DELETE
   url: "{{baseUrl}}/integrations/api/v1/api-services/{{apiServiceId}}/credentials/secrets/{{secretId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiServiceIntegrations / Activate an API service integration instance secret
+- name: Activate an API service integration instance secret
   method: POST
   url: "{{baseUrl}}/integrations/api/v1/api-services/{{apiServiceId}}/credentials/secrets/{{secretId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiServiceIntegrations / Deactivate an API service integration instance secret
+- name: Deactivate an API service integration instance secret
   method: POST
   url: "{{baseUrl}}/integrations/api/v1/api-services/{{apiServiceId}}/credentials/secrets/{{secretId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

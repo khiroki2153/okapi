@@ -1,33 +1,25 @@
 ---
 name: ApplicationGrants
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationGrants / List all app grants
+- name: List all app grants
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/grants"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationGrants / Grant consent to scope
+- name: Grant consent to scope
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/grants"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       issuer: "{yourOktaDomain}"
       scopeId: okta.users.read
-- name: ApplicationGrants / Retrieve an app grant
+- name: Retrieve an app grant
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/grants/{{grantId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationGrants / Revoke an app grant
+- name: Revoke an app grant
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/grants/{{grantId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

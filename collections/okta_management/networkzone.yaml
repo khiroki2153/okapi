@@ -1,18 +1,16 @@
 ---
 name: NetworkZone
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: NetworkZone / List all network zones
+- name: List all network zones
   method: GET
   url: "{{baseUrl}}/api/v1/zones"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: NetworkZone / Create a network zone
+- name: Create a network zone
   method: POST
   url: "{{baseUrl}}/api/v1/zones"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -29,18 +27,13 @@ requests:
         value: 2.2.3.4/24
       - type: CIDR
         value: 3.3.4.5/24
-- name: NetworkZone / Retrieve a network zone
+- name: Retrieve a network zone
   method: GET
   url: "{{baseUrl}}/api/v1/zones/{{zoneId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: NetworkZone / Replace a network zone
+- name: Replace a network zone
   method: PUT
   url: "{{baseUrl}}/api/v1/zones/{{zoneId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -82,21 +75,12 @@ requests:
           hints:
             allow:
             - POST
-- name: NetworkZone / Delete a network zone
+- name: Delete a network zone
   method: DELETE
   url: "{{baseUrl}}/api/v1/zones/{{zoneId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: NetworkZone / Activate a network zone
+- name: Activate a network zone
   method: POST
   url: "{{baseUrl}}/api/v1/zones/{{zoneId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: NetworkZone / Deactivate a network zone
+- name: Deactivate a network zone
   method: POST
   url: "{{baseUrl}}/api/v1/zones/{{zoneId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

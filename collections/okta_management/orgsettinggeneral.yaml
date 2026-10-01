@@ -1,18 +1,16 @@
 ---
 name: OrgSettingGeneral
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: OrgSettingGeneral / Retrieve the Org general settings
+- name: Retrieve the Org general settings
   method: GET
   url: "{{baseUrl}}/api/v1/org"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingGeneral / Replace the Org general settings
+- name: Replace the Org general settings
   method: PUT
   url: "{{baseUrl}}/api/v1/org"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -28,12 +26,10 @@ requests:
       state: California
       supportPhoneNumber: "+18887227871"
       website: www.okta.com
-- name: OrgSettingGeneral / Update the Org general settings
+- name: Update the Org general settings
   method: POST
   url: "{{baseUrl}}/api/v1/org"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

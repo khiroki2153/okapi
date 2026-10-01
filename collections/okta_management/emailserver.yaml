@@ -1,18 +1,16 @@
 ---
 name: EmailServer
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: EmailServer / List all enrolled SMTP servers
+- name: List all enrolled SMTP servers
   method: GET
   url: "{{baseUrl}}/api/v1/email-servers"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EmailServer / Create a custom SMTP server
+- name: Create a custom SMTP server
   method: POST
   url: "{{baseUrl}}/api/v1/email-servers"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -24,36 +22,26 @@ requests:
       port: 587
       username: user@example.com
       password: securepassword
-- name: EmailServer / Retrieve an SMTP server configuration
+- name: Retrieve an SMTP server configuration
   method: GET
   url: "{{baseUrl}}/api/v1/email-servers/{{emailServerId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EmailServer / Delete an SMTP server configuration
+- name: Delete an SMTP server configuration
   method: DELETE
   url: "{{baseUrl}}/api/v1/email-servers/{{emailServerId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EmailServer / Update an SMTP server configuration
+- name: Update an SMTP server configuration
   method: PATCH
   url: "{{baseUrl}}/api/v1/email-servers/{{emailServerId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       alias: CustomServer1 New Alias
       password: New password
-- name: EmailServer / Test an SMTP server configuration
+- name: Test an SMTP server configuration
   method: POST
   url: "{{baseUrl}}/api/v1/email-servers/{{emailServerId}}/test"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

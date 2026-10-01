@@ -1,9 +1,9 @@
 ---
 name: ApplicationPolicies
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationPolicies / Assign an app sign-in policy
+- name: Assign an app sign-in policy
   method: PUT
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/policies/{{policyId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

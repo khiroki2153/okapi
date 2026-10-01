@@ -27,4 +27,28 @@ describe Okapi::Collection do
   it "raises RequestNotFoundError for an unknown request name" do
     _(-> { collection.find("Nope") }).must_raise(Okapi::RequestNotFoundError)
   end
+
+  describe "collection-level headers/query inheritance" do
+    let(:collection) { Okapi::Collection.load(fixture_path("collection_with_defaults.yaml")) }
+
+    it "gives every request the collection's default headers and query" do
+      request = collection.find("List Users")
+      _(request.headers).must_equal("Authorization" => "SSWS {{apiToken}}", "Accept" => "application/json")
+      _(request.query).must_equal("limit" => 25)
+    end
+
+    it "lets a request override a specific inherited key while keeping the rest" do
+      request = collection.find("List Users Without Limit")
+      _(request.query).must_equal("limit" => 5)
+    end
+
+    it "merges a request's own headers on top of the collection defaults" do
+      request = collection.find("Create User")
+      _(request.headers).must_equal(
+        "Authorization" => "SSWS {{apiToken}}",
+        "Accept" => "application/json",
+        "Content-Type" => "application/json"
+      )
+    end
+  end
 end

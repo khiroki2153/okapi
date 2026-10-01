@@ -1,18 +1,16 @@
 ---
 name: User
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: User / List all users
+- name: List all users
   method: GET
   url: "{{baseUrl}}/api/v1/users"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: User / Create a user
+- name: Create a user
   method: POST
   url: "{{baseUrl}}/api/v1/users"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -23,18 +21,13 @@ requests:
         email: isaac.brock@example.com
         login: isaac.brock@example.com
         mobilePhone: 555-415-1337
-- name: User / Retrieve a user
+- name: Retrieve a user
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: User / Replace a user
+- name: Replace a user
   method: PUT
   url: "{{baseUrl}}/api/v1/users/{{id}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -54,12 +47,10 @@ requests:
         email: isaac.brock@example.com
         login: isaac.brock@example.com
         mobilePhone: 555-415-1337
-- name: User / Update a user
+- name: Update a user
   method: POST
   url: "{{baseUrl}}/api/v1/users/{{id}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -68,15 +59,9 @@ requests:
         firstName: Isaac
         email: isaac.brock@update.example.com
         mobilePhone: 555-415-1337
-- name: User / Delete a user
+- name: Delete a user
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{id}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: User / List all user blocks
+- name: List all user blocks
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{id}}/blocks"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

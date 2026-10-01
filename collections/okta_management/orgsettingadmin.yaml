@@ -1,50 +1,38 @@
 ---
 name: OrgSettingAdmin
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: OrgSettingAdmin / Retrieve the org third-party admin setting
+- name: Retrieve the org third-party admin setting
   method: GET
   url: "{{baseUrl}}/api/v1/org/orgSettings/thirdPartyAdminSetting"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingAdmin / Update the org third-party admin setting
+- name: Update the org third-party admin setting
   method: POST
   url: "{{baseUrl}}/api/v1/org/orgSettings/thirdPartyAdminSetting"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: OrgSettingAdmin / Retrieve the Okta Admin Console assignment setting
+- name: Retrieve the Okta Admin Console assignment setting
   method: GET
   url: "{{baseUrl}}/api/v1/org/settings/autoAssignAdminAppSetting"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingAdmin / Update the Okta Admin Console assignment setting
+- name: Update the Okta Admin Console assignment setting
   method: POST
   url: "{{baseUrl}}/api/v1/org/settings/autoAssignAdminAppSetting"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: OrgSettingAdmin / Retrieve the default public client app role setting
+- name: Retrieve the default public client app role setting
   method: GET
   url: "{{baseUrl}}/api/v1/org/settings/clientPrivilegesSetting"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: OrgSettingAdmin / Assign the default public client app role setting
+- name: Assign the default public client app role setting
   method: PUT
   url: "{{baseUrl}}/api/v1/org/settings/clientPrivilegesSetting"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

@@ -1,18 +1,16 @@
 ---
 name: RealmAssignment
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RealmAssignment / List all realm assignments
+- name: List all realm assignments
   method: GET
   url: "{{baseUrl}}/api/v1/realm-assignments"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RealmAssignment / Create a realm assignment
+- name: Create a realm assignment
   method: POST
   url: "{{baseUrl}}/api/v1/realm-assignments"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -26,35 +24,25 @@ requests:
           value: user.profile.role ==\"Manager\"
       name: Realm Assignment 1
       priority: 0
-- name: RealmAssignment / List all realm assignment operations
+- name: List all realm assignment operations
   method: GET
   url: "{{baseUrl}}/api/v1/realm-assignments/operations"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RealmAssignment / Execute a realm assignment
+- name: Execute a realm assignment
   method: POST
   url: "{{baseUrl}}/api/v1/realm-assignments/operations"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       assignmentId: 0pr1b7rxZj2ibQzfP0g5
-- name: RealmAssignment / Retrieve a realm assignment
+- name: Retrieve a realm assignment
   method: GET
   url: "{{baseUrl}}/api/v1/realm-assignments/{{assignmentId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RealmAssignment / Replace a realm assignment
+- name: Replace a realm assignment
   method: PUT
   url: "{{baseUrl}}/api/v1/realm-assignments/{{assignmentId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -68,21 +56,12 @@ requests:
           value: user.profile.role ==\"Manager\"
       name: Realm Assignment 1
       priority: 0
-- name: RealmAssignment / Delete a realm assignment
+- name: Delete a realm assignment
   method: DELETE
   url: "{{baseUrl}}/api/v1/realm-assignments/{{assignmentId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RealmAssignment / Activate a realm assignment
+- name: Activate a realm assignment
   method: POST
   url: "{{baseUrl}}/api/v1/realm-assignments/{{assignmentId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RealmAssignment / Deactivate a realm assignment
+- name: Deactivate a realm assignment
   method: POST
   url: "{{baseUrl}}/api/v1/realm-assignments/{{assignmentId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

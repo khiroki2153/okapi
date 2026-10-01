@@ -1,18 +1,16 @@
 ---
 name: Template
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: Template / List all SMS templates
+- name: List all SMS templates
   method: GET
   url: "{{baseUrl}}/api/v1/templates/sms"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Template / Create an SMS template
+- name: Create an SMS template
   method: POST
   url: "{{baseUrl}}/api/v1/templates/sms"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -24,18 +22,13 @@ requests:
         es: "${org.name}: el código de verificación es ${code}"
         fr: "${org.name}: votre code de vérification est ${code}"
         it: "${org.name}: il codice di verifica è ${code}"
-- name: Template / Retrieve an SMS template
+- name: Retrieve an SMS template
   method: GET
   url: "{{baseUrl}}/api/v1/templates/sms/{{templateId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: Template / Replace an SMS template
+- name: Replace an SMS template
   method: PUT
   url: "{{baseUrl}}/api/v1/templates/sms/{{templateId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -47,21 +40,16 @@ requests:
         es: "${org.name}: el código de verificación es ${code}"
         fr: "${org.name}: votre code de vérification est ${code}"
         it: "${org.name}: il codice di verifica è ${code}"
-- name: Template / Update an SMS template
+- name: Update an SMS template
   method: POST
   url: "{{baseUrl}}/api/v1/templates/sms/{{templateId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       translations:
         de: "${org.name}: ihre bestätigungscode ist ${code}."
-- name: Template / Delete an SMS template
+- name: Delete an SMS template
   method: DELETE
   url: "{{baseUrl}}/api/v1/templates/sms/{{templateId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

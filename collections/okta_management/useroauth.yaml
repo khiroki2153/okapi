@@ -1,27 +1,18 @@
 ---
 name: UserOAuth
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: UserOAuth / List all refresh tokens for a client
+- name: List all refresh tokens for a client
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/clients/{{clientId}}/tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserOAuth / Revoke all refresh tokens for a client
+- name: Revoke all refresh tokens for a client
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/clients/{{clientId}}/tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserOAuth / Retrieve a refresh token for a client
+- name: Retrieve a refresh token for a client
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/clients/{{clientId}}/tokens/{{tokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserOAuth / Revoke a token for a client
+- name: Revoke a token for a client
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/clients/{{clientId}}/tokens/{{tokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

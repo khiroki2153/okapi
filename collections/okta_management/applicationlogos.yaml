@@ -1,9 +1,9 @@
 ---
 name: ApplicationLogos
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationLogos / Upload an application logo
+- name: Upload an application logo
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/logo"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

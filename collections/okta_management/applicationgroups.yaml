@@ -1,24 +1,19 @@
 ---
 name: ApplicationGroups
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationGroups / List all application groups
+- name: List all application groups
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationGroups / Retrieve an application group
+- name: Retrieve an application group
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationGroups / Assign an application group
+- name: Assign an application group
   method: PUT
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -37,18 +32,13 @@ requests:
         organization:
         userType:
         department: Accounting
-- name: ApplicationGroups / Unassign an application group
+- name: Unassign an application group
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationGroups / Update an application group
+- name: Update an application group
   method: PATCH
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/groups/{{groupId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

@@ -1,67 +1,41 @@
 ---
 name: IdentityProviderSigningKeys
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: IdentityProviderSigningKeys / List all certificate signing requests
+- name: List all certificate signing requests
   method: GET
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/csrs"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / Generate a certificate signing request
+- name: Generate a certificate signing request
   method: POST
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/csrs"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: IdentityProviderSigningKeys / Retrieve a certificate signing request
+- name: Retrieve a certificate signing request
   method: GET
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/csrs/{{idpCsrId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / Revoke a certificate signing request
+- name: Revoke a certificate signing request
   method: DELETE
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/csrs/{{idpCsrId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / Publish a certificate signing request
+- name: Publish a certificate signing request
   method: POST
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/csrs/{{idpCsrId}}/lifecycle/publish"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / List all signing key credentials for IdP
+- name: List all signing key credentials for IdP
   method: GET
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/keys"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / List the active signing key credential for IdP
+- name: List the active signing key credential for IdP
   method: GET
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/keys/active"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / Generate a new signing key credential for IdP
+- name: Generate a new signing key credential for IdP
   method: POST
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/keys/generate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / Retrieve a signing key credential for IdP
+- name: Retrieve a signing key credential for IdP
   method: GET
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/keys/{{kid}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: IdentityProviderSigningKeys / Clone a signing key credential for IdP
+- name: Clone a signing key credential for IdP
   method: POST
   url: "{{baseUrl}}/api/v1/idps/{{idpId}}/credentials/keys/{{kid}}/clone"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

@@ -1,51 +1,30 @@
 ---
 name: RoleBTargetClient
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RoleBTargetClient / List all client role app targets
+- name: List all client role app targets
   method: GET
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/catalog/apps"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetClient / Assign a client role app target
+- name: Assign a client role app target
   method: PUT
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetClient / Unassign a client role app target
+- name: Unassign a client role app target
   method: DELETE
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetClient / Assign a client role app instance target
+- name: Assign a client role app instance target
   method: PUT
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}/{{appId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetClient / Unassign a client role app instance target
+- name: Unassign a client role app instance target
   method: DELETE
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/catalog/apps/{{appName}}/{{appId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetClient / List all client role group targets
+- name: List all client role group targets
   method: GET
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/groups"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetClient / Assign a client role group target
+- name: Assign a client role group target
   method: PUT
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleBTargetClient / Unassign a client role group target
+- name: Unassign a client role group target
   method: DELETE
   url: "{{baseUrl}}/oauth2/v1/clients/{{clientId}}/roles/{{roleAssignmentId}}/targets/groups/{{groupId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

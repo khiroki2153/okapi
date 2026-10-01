@@ -1,12 +1,13 @@
 ---
 name: OrgCreator
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: OrgCreator / Create an org
+- name: Create an org
   method: POST
   url: "{{baseUrl}}/api/v1/orgs"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

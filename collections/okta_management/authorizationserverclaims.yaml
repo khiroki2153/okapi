@@ -1,18 +1,16 @@
 ---
 name: AuthorizationServerClaims
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AuthorizationServerClaims / List all custom token claims
+- name: List all custom token claims
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/claims"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerClaims / Create a custom token claim
+- name: Create a custom token claim
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/claims"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -28,18 +26,13 @@ requests:
       system: false
       value: Support
       valueType: GROUPS
-- name: AuthorizationServerClaims / Retrieve a custom token claim
+- name: Retrieve a custom token claim
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/claims/{{claimId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerClaims / Replace a custom token claim
+- name: Replace a custom token claim
   method: PUT
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/claims/{{claimId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -55,9 +48,6 @@ requests:
       system: false
       value: Knowledge Base
       valueType: GROUPS
-- name: AuthorizationServerClaims / Delete a custom token claim
+- name: Delete a custom token claim
   method: DELETE
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/claims/{{claimId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

@@ -1,26 +1,21 @@
 ---
 name: AuthorizationServerAssoc
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AuthorizationServerAssoc / List all associated authorization servers
+- name: List all associated authorization servers
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/associatedServers"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServerAssoc / Create an associated authorization server
+- name: Create an associated authorization server
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/associatedServers"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
     - trusted: "{authorizationServerId}"
-- name: AuthorizationServerAssoc / Delete an associated authorization server
+- name: Delete an associated authorization server
   method: DELETE
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/associatedServers/{{associatedServerId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

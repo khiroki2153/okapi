@@ -1,27 +1,22 @@
 ---
 name: GroupOwner
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: GroupOwner / List all group owners
+- name: List all group owners
   method: GET
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/owners"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: GroupOwner / Assign a group owner
+- name: Assign a group owner
   method: POST
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/owners"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       id: 00u1cmc03xjzePoWD0h8
       type: USER
-- name: GroupOwner / Delete a group owner
+- name: Delete a group owner
   method: DELETE
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/owners/{{ownerId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

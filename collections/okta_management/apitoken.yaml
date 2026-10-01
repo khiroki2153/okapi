@@ -1,30 +1,22 @@
 ---
 name: ApiToken
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApiToken / List all API token metadata
+- name: List all API token metadata
   method: GET
   url: "{{baseUrl}}/api/v1/api-tokens"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiToken / Revoke the current API token
+- name: Revoke the current API token
   method: DELETE
   url: "{{baseUrl}}/api/v1/api-tokens/current"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiToken / Retrieve an API token's metadata
+- name: Retrieve an API token's metadata
   method: GET
   url: "{{baseUrl}}/api/v1/api-tokens/{{apiTokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApiToken / Upsert an API token network condition
+- name: Upsert an API token network condition
   method: PUT
   url: "{{baseUrl}}/api/v1/api-tokens/{{apiTokenId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -35,9 +27,6 @@ requests:
       network:
         connection: ANYWHERE
       created: '2021-11-09T20:38:10.000Z'
-- name: ApiToken / Revoke an API token
+- name: Revoke an API token
   method: DELETE
   url: "{{baseUrl}}/api/v1/api-tokens/{{apiTokenId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

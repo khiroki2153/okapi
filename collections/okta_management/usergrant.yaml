@@ -1,39 +1,24 @@
 ---
 name: UserGrant
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: UserGrant / List all grants for a client
+- name: List all grants for a client
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/clients/{{clientId}}/grants"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserGrant / Revoke all grants for a client
+- name: Revoke all grants for a client
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/clients/{{clientId}}/grants"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserGrant / List all user grants
+- name: List all user grants
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/grants"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserGrant / Revoke all user grants
+- name: Revoke all user grants
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/grants"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserGrant / Retrieve a user grant
+- name: Retrieve a user grant
   method: GET
   url: "{{baseUrl}}/api/v1/users/{{userId}}/grants/{{grantId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: UserGrant / Revoke a user grant
+- name: Revoke a user grant
   method: DELETE
   url: "{{baseUrl}}/api/v1/users/{{userId}}/grants/{{grantId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

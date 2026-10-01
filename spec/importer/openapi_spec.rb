@@ -10,6 +10,10 @@ describe Okapi::Importer::OpenApi do
     _(collection["description"]).must_equal "A tiny OpenAPI 3 document for testing the importer"
   end
 
+  it "puts Authorization/Accept once at the collection level, not on every request" do
+    _(collection["headers"]).must_equal("Authorization" => "SSWS {{apiToken}}", "Accept" => "application/json")
+  end
+
   it "prefixes request names with the operation's first tag" do
     names = collection["requests"].map { |r| r["name"] }
     _(names).must_equal [
@@ -41,10 +45,10 @@ describe Okapi::Importer::OpenApi do
     _(request["body"]).must_equal("type" => "json", "content" => { "sendEmail" => false })
   end
 
-  it "omits body and Content-Type for requests without a requestBody" do
+  it "omits body and headers entirely for requests without a requestBody (nothing to add beyond the collection defaults)" do
     request = collection["requests"].find { |r| r["name"] == "User / List all users" }
     _(request["body"]).must_be_nil
-    _(request["headers"]).must_equal("Authorization" => "SSWS {{apiToken}}", "Accept" => "application/json")
+    _(request["headers"]).must_be_nil
   end
 
   it "filters by tag when requested" do
@@ -52,13 +56,14 @@ describe Okapi::Importer::OpenApi do
     _(filtered["requests"]).must_equal []
   end
 
-  it "groups operations into one collection per tag" do
+  it "groups operations into one collection per tag, without repeating the tag in each request's name" do
     grouped = Okapi::Importer::OpenApi.import_grouped_by_tag(fixture_path("openapi_spec.yaml"))
 
     _(grouped.keys).must_equal %w[User Group]
     _(grouped["User"]["name"]).must_equal "User"
+    _(grouped["User"]["headers"]).must_equal("Authorization" => "SSWS {{apiToken}}", "Accept" => "application/json")
     _(grouped["User"]["requests"].size).must_equal 4
-    _(grouped["Group"]["requests"].map { |r| r["name"] }).must_equal ["Group / List groups", "Group / Create a group"]
+    _(grouped["Group"]["requests"].map { |r| r["name"] }).must_equal ["List groups", "Create a group"]
   end
 
   it "gives every generated request its own header objects, never aliased" do

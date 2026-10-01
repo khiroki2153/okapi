@@ -1,18 +1,16 @@
 ---
 name: SSFReceiver
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: SSFReceiver / List all security events providers
+- name: List all security events providers
   method: GET
   url: "{{baseUrl}}/api/v1/security-events-providers"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFReceiver / Create a security events provider
+- name: Create a security events provider
   method: POST
   url: "{{baseUrl}}/api/v1/security-events-providers"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -21,18 +19,13 @@ requests:
       type: okta
       settings:
         well_known_url: https://example.okta.com/.well-known/ssf-configuration
-- name: SSFReceiver / Retrieve the security events provider
+- name: Retrieve the security events provider
   method: GET
   url: "{{baseUrl}}/api/v1/security-events-providers/{{securityEventProviderId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFReceiver / Replace a security events provider
+- name: Replace a security events provider
   method: PUT
   url: "{{baseUrl}}/api/v1/security-events-providers/{{securityEventProviderId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -41,21 +34,12 @@ requests:
       type: okta
       settings:
         well_known_url: https://example.okta.com/.well-known/ssf-configuration
-- name: SSFReceiver / Delete a security events provider
+- name: Delete a security events provider
   method: DELETE
   url: "{{baseUrl}}/api/v1/security-events-providers/{{securityEventProviderId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFReceiver / Activate a security events provider
+- name: Activate a security events provider
   method: POST
   url: "{{baseUrl}}/api/v1/security-events-providers/{{securityEventProviderId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: SSFReceiver / Deactivate a security events provider
+- name: Deactivate a security events provider
   method: POST
   url: "{{baseUrl}}/api/v1/security-events-providers/{{securityEventProviderId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

@@ -1,18 +1,16 @@
 ---
 name: RoleECustom
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RoleECustom / List all custom roles
+- name: List all custom roles
   method: GET
   url: "{{baseUrl}}/api/v1/iam/roles"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleECustom / Create a custom role
+- name: Create a custom role
   method: POST
   url: "{{baseUrl}}/api/v1/iam/roles"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -24,27 +22,19 @@ requests:
       - okta.users.read
       - okta.groups.read
       - okta.users.userprofile.manage
-- name: RoleECustom / Retrieve a role
+- name: Retrieve a role
   method: GET
   url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleECustom / Replace a custom role
+- name: Replace a custom role
   method: PUT
   url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       label: UserCreator
       description: Create users
-- name: RoleECustom / Delete a custom role
+- name: Delete a custom role
   method: DELETE
   url: "{{baseUrl}}/api/v1/iam/roles/{{roleIdOrLabel}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

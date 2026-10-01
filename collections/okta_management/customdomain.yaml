@@ -1,57 +1,42 @@
 ---
 name: CustomDomain
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: CustomDomain / List all custom domains
+- name: List all custom domains
   method: GET
   url: "{{baseUrl}}/api/v1/domains"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomDomain / Create a custom domain
+- name: Create a custom domain
   method: POST
   url: "{{baseUrl}}/api/v1/domains"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomDomain / Retrieve a custom domain
+- name: Retrieve a custom domain
   method: GET
   url: "{{baseUrl}}/api/v1/domains/{{domainId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomDomain / Replace a custom domain's brand
+- name: Replace a custom domain's brand
   method: PUT
   url: "{{baseUrl}}/api/v1/domains/{{domainId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomDomain / Delete a custom domain
+- name: Delete a custom domain
   method: DELETE
   url: "{{baseUrl}}/api/v1/domains/{{domainId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomDomain / Upsert the custom domain's certificate
+- name: Upsert the custom domain's certificate
   method: PUT
   url: "{{baseUrl}}/api/v1/domains/{{domainId}}/certificate"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomDomain / Verify a custom domain
+- name: Verify a custom domain
   method: POST
   url: "{{baseUrl}}/api/v1/domains/{{domainId}}/verify"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

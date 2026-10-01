@@ -1,40 +1,30 @@
 ---
 name: ApplicationCrossAppAccessConnections
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: ApplicationCrossAppAccessConnections / Retrieve all Cross App Access connections
+- name: Retrieve all Cross App Access connections
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/cwo/connections"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationCrossAppAccessConnections / Create a Cross App Access connection
+- name: Create a Cross App Access connection
   method: POST
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/cwo/connections"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: ApplicationCrossAppAccessConnections / Retrieve a Cross App Access connection
+- name: Retrieve a Cross App Access connection
   method: GET
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/cwo/connections/{{connectionId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationCrossAppAccessConnections / Delete a Cross App Access connection
+- name: Delete a Cross App Access connection
   method: DELETE
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/cwo/connections/{{connectionId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: ApplicationCrossAppAccessConnections / Update a Cross App Access connection
+- name: Update a Cross App Access connection
   method: PATCH
   url: "{{baseUrl}}/api/v1/apps/{{appId}}/cwo/connections/{{connectionId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

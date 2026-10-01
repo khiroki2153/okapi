@@ -6,3 +6,6 @@
 
 # Personal Claude Code settings (permissions etc.), not meant to be shared.
 /.claude/settings.local.json
+
+# Local case files (customer/support case data), not meant to be shared.
+/cases/

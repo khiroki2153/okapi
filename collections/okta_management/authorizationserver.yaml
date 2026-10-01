@@ -1,18 +1,16 @@
 ---
 name: AuthorizationServer
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: AuthorizationServer / List all authorization servers
+- name: List all authorization servers
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServer / Create an authorization server
+- name: Create an authorization server
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -21,18 +19,13 @@ requests:
       description: Sample Authorization Server description
       audiences:
       - api://default
-- name: AuthorizationServer / Retrieve an authorization server
+- name: Retrieve an authorization server
   method: GET
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServer / Replace an authorization server
+- name: Replace an authorization server
   method: PUT
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -48,21 +41,12 @@ requests:
       issuer: https://{yourOktaDomain}/oauth2/{authorizationServerId}
       issuerMode: ORG_URL
       status: ACTIVE
-- name: AuthorizationServer / Delete an authorization server
+- name: Delete an authorization server
   method: DELETE
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServer / Activate an authorization server
+- name: Activate an authorization server
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: AuthorizationServer / Deactivate an authorization server
+- name: Deactivate an authorization server
   method: POST
   url: "{{baseUrl}}/api/v1/authorizationServers/{{authServerId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

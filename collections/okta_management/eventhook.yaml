@@ -1,18 +1,16 @@
 ---
 name: EventHook
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: EventHook / List all event hooks
+- name: List all event hooks
   method: GET
   url: "{{baseUrl}}/api/v1/eventHooks"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EventHook / Create an event hook
+- name: Create an event hook
   method: POST
   url: "{{baseUrl}}/api/v1/eventHooks"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -34,18 +32,13 @@ requests:
             type: HEADER
             key: Authorization
             value: my-shared-secret
-- name: EventHook / Retrieve an event hook
+- name: Retrieve an event hook
   method: GET
   url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EventHook / Replace an event hook
+- name: Replace an event hook
   method: PUT
   url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -72,27 +65,15 @@ requests:
             type: HEADER
             key: Authorization
             value: my-shared-secret
-- name: EventHook / Delete an event hook
+- name: Delete an event hook
   method: DELETE
   url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EventHook / Activate an event hook
+- name: Activate an event hook
   method: POST
   url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EventHook / Deactivate an event hook
+- name: Deactivate an event hook
   method: POST
   url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: EventHook / Verify an event hook
+- name: Verify an event hook
   method: POST
   url: "{{baseUrl}}/api/v1/eventHooks/{{eventHookId}}/lifecycle/verify"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

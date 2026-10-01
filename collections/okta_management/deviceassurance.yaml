@@ -1,18 +1,16 @@
 ---
 name: DeviceAssurance
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: DeviceAssurance / List all device assurance policies
+- name: List all device assurance policies
   method: GET
   url: "{{baseUrl}}/api/v1/device-assurances"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: DeviceAssurance / Create a device assurance policy
+- name: Create a device assurance policy
   method: POST
   url: "{{baseUrl}}/api/v1/device-assurances"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -30,18 +28,13 @@ requests:
         include:
         - BIOMETRIC
       secureHardwarePresent: true
-- name: DeviceAssurance / Retrieve a device assurance policy
+- name: Retrieve a device assurance policy
   method: GET
   url: "{{baseUrl}}/api/v1/device-assurances/{{deviceAssuranceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: DeviceAssurance / Replace a device assurance policy
+- name: Replace a device assurance policy
   method: PUT
   url: "{{baseUrl}}/api/v1/device-assurances/{{deviceAssuranceId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -59,9 +52,6 @@ requests:
         include:
         - BIOMETRIC
       secureHardwarePresent: true
-- name: DeviceAssurance / Delete a device assurance policy
+- name: Delete a device assurance policy
   method: DELETE
   url: "{{baseUrl}}/api/v1/device-assurances/{{deviceAssuranceId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

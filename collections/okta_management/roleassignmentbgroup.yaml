@@ -1,31 +1,23 @@
 ---
 name: RoleAssignmentBGroup
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RoleAssignmentBGroup / List all group role assignments
+- name: List all group role assignments
   method: GET
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleAssignmentBGroup / Assign a role to a group
+- name: Assign a role to a group
   method: POST
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: RoleAssignmentBGroup / Retrieve a group role assignment
+- name: Retrieve a group role assignment
   method: GET
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleAssignmentBGroup / Unassign a group role
+- name: Unassign a group role
   method: DELETE
   url: "{{baseUrl}}/api/v1/groups/{{groupId}}/roles/{{roleAssignmentId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

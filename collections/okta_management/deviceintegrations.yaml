@@ -1,27 +1,18 @@
 ---
 name: DeviceIntegrations
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: DeviceIntegrations / List all device integrations
+- name: List all device integrations
   method: GET
   url: "{{baseUrl}}/api/v1/device-integrations"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: DeviceIntegrations / Retrieve a device integration
+- name: Retrieve a device integration
   method: GET
   url: "{{baseUrl}}/api/v1/device-integrations/{{deviceIntegrationId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: DeviceIntegrations / Activate a device integration
+- name: Activate a device integration
   method: POST
   url: "{{baseUrl}}/api/v1/device-integrations/{{deviceIntegrationId}}/lifecycle/activate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: DeviceIntegrations / Deactivate a device integration
+- name: Deactivate a device integration
   method: POST
   url: "{{baseUrl}}/api/v1/device-integrations/{{deviceIntegrationId}}/lifecycle/deactivate"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

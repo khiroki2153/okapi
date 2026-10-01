@@ -1,18 +1,16 @@
 ---
 name: BotProtection
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: BotProtection / Retrieve the bot protection configuration
+- name: Retrieve the bot protection configuration
   method: GET
   url: "{{baseUrl}}/api/v1/bot-protection/configuration"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: BotProtection / Update the bot protection configuration
+- name: Update the bot protection configuration
   method: POST
   url: "{{baseUrl}}/api/v1/bot-protection/configuration"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

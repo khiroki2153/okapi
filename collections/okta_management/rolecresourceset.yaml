@@ -1,18 +1,16 @@
 ---
 name: RoleCResourceSet
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: RoleCResourceSet / List all resource sets
+- name: List all resource sets
   method: GET
   url: "{{baseUrl}}/api/v1/iam/resource-sets"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleCResourceSet / Create a resource set
+- name: Create a resource set
   method: POST
   url: "{{baseUrl}}/api/v1/iam/resource-sets"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -25,27 +23,19 @@ requests:
       - https://{yourOktaDomain}/api/v1/users
       - https://{yourOktaDomain}/api/v1/realms/00guaxWZ0AOa5NFAj0g3
       - https://{yourOktaDomain}/api/v1/realms
-- name: RoleCResourceSet / Retrieve a resource set
+- name: Retrieve a resource set
   method: GET
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: RoleCResourceSet / Replace a resource set
+- name: Replace a resource set
   method: PUT
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content:
       label: SF-IT-People
       description: People in the IT department of San Francisco
-- name: RoleCResourceSet / Delete a resource set
+- name: Delete a resource set
   method: DELETE
   url: "{{baseUrl}}/api/v1/iam/resource-sets/{{resourceSetIdOrLabel}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json

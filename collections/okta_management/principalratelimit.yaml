@@ -1,18 +1,16 @@
 ---
 name: PrincipalRateLimit
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: PrincipalRateLimit / List all principal rate limits
+- name: List all principal rate limits
   method: GET
   url: "{{baseUrl}}/api/v1/principal-rate-limits"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: PrincipalRateLimit / Create a principal rate limit
+- name: Create a principal rate limit
   method: POST
   url: "{{baseUrl}}/api/v1/principal-rate-limits"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -21,18 +19,13 @@ requests:
       principalType: SSWS_TOKEN
       defaultPercentage: 50
       defaultConcurrencyPercentage: 75
-- name: PrincipalRateLimit / Retrieve a principal rate limit
+- name: Retrieve a principal rate limit
   method: GET
   url: "{{baseUrl}}/api/v1/principal-rate-limits/{{principalRateLimitId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: PrincipalRateLimit / Replace a principal rate limit
+- name: Replace a principal rate limit
   method: PUT
   url: "{{baseUrl}}/api/v1/principal-rate-limits/{{principalRateLimitId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json

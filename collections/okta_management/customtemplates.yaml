@@ -1,30 +1,22 @@
 ---
 name: CustomTemplates
+headers:
+  Authorization: SSWS {{apiToken}}
+  Accept: application/json
 requests:
-- name: CustomTemplates / List all email templates
+- name: List all email templates
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Retrieve an email template
+- name: Retrieve an email template
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / List all email customizations
+- name: List all email customizations
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/customizations"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Create an email customization
+- name: Create an email customization
   method: POST
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/customizations"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -34,24 +26,16 @@ requests:
       body: <!DOCTYPE html><html><body><p>Bonjour ${user.profile.firstName}. <a href="${activationLink}">Activer
         le compte</a></p></body></html>
       isDefault: false
-- name: CustomTemplates / Delete all email customizations
+- name: Delete all email customizations
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/customizations"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Retrieve an email customization
+- name: Retrieve an email customization
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/customizations/{{customizationId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Replace an email customization
+- name: Replace an email customization
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/customizations/{{customizationId}}"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
@@ -61,49 +45,29 @@ requests:
       body: <!DOCTYPE html><html><body><p>Bonjour ${user.profile.firstName}. <a href="${activationLink}">Activer
         le compte</a></p></body></html>
       isDefault: false
-- name: CustomTemplates / Delete an email customization
+- name: Delete an email customization
   method: DELETE
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/customizations/{{customizationId}}"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Retrieve a preview of an email customization
+- name: Retrieve a preview of an email customization
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/customizations/{{customizationId}}/preview"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Retrieve an email template default content
+- name: Retrieve an email template default content
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/default-content"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Retrieve a preview of the email template default content
+- name: Retrieve a preview of the email template default content
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/default-content/preview"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Retrieve the email template settings
+- name: Retrieve the email template settings
   method: GET
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/settings"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
-- name: CustomTemplates / Replace the email template settings
+- name: Replace the email template settings
   method: PUT
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/settings"
   headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
     Content-Type: application/json
   body:
     type: json
     content: {}
-- name: CustomTemplates / Send a test email
+- name: Send a test email
   method: POST
   url: "{{baseUrl}}/api/v1/brands/{{brandId}}/templates/email/{{templateName}}/test"
-  headers:
-    Authorization: SSWS {{apiToken}}
-    Accept: application/json
