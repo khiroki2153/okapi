@@ -10,7 +10,7 @@ when_to_use: ユーザーが「API で〇〇して」「〇〇 API を叩いて�
 
 `okapi` は YAML 形式の API コレクションを管理・実行する Ruby 製 CLI ツール。
 環境ファイルで SSWS トークンを管理するため、コレクション YAML にトークンが露出しない。
-詳細は okapi リポジトリの README.md / SPEC.md を参照。
+詳細は okapi リポジトリの README.md を参照。
 
 このスキルは okapi リポジトリ自身に同梱されている（`.claude/skills/okapi/SKILL.md`）。
 以下のパスはすべて **okapi リポジトリのルート基準の相対パス**。okapi リポジトリの

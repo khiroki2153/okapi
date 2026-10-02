@@ -1,7 +1,7 @@
 # okapi
 
 GUI なしの API コレクション管理 CLI（Ruby 製）。Postman の代替として、リクエストを
-YAML で管理し、実行結果を HAR 形式で保存する。詳細な背景は [SPEC.md](SPEC.md) を参照。
+YAML で管理し、実行結果を HAR 形式で保存する。
 
 依存は Ruby 標準ライブラリのみ（`optparse` / `net/http` / `yaml` / `json`）。
 `gem install` や `bundle install` は不要。
@@ -94,8 +94,10 @@ okapi import openapi /tmp/okta_mgmt.yaml --output-dir collections/okta_managemen
 
 ## コレクション / 環境ファイルのフォーマット
 
-`SPEC.md` の「コレクション YAML フォーマット」「環境ファイル YAML フォーマット」を
-参照。サンプルは `examples/okta_users.yaml` と `examples/sandbox.yaml`。
+コレクション YAML はリクエストの配列を持ち、各リクエストに `name` / `method` /
+`url` / `headers` / `query` / `body` を書く。環境ファイルは `name` と
+`variables`（`baseUrl` や `apiToken` などのキーと値）を持つ。具体例は
+`examples/okta_users.yaml` と `examples/sandbox.yaml` を参照。
 
 ### headers / query の継承
 

@@ -9,3 +9,6 @@
 
 # Local case files (customer/support case data), not meant to be shared.
 /cases/
+
+# Internal design doc, not meant to be published in this public repo.
+/SPEC.md
