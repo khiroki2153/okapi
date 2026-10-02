@@ -17,14 +17,14 @@ export PATH="$PWD/bin:$PATH"   # or call ./bin/okapi directly
 
 このリポジトリには `.claude/skills/okapi/SKILL.md` が同梱されている。
 [skills.sh](https://skills.sh)（[vercel-labs/skills](https://github.com/vercel-labs/skills)）
-経由で他リポジトリに取り込める：
+経由で他リポジトリに取り込める。
 
 ```bash
 npx skills add khiroki2153/okapi
 ```
 
-スキル自体は okapi 本体（この CLI）がローカルに存在することを前提にしている
-（スキル単体では動作しない）。
+スキル自体は okapi 本体（この CLI）がローカルに存在することを前提にしている。
+スキル単体では動作しない。
 
 ## 使い方
 
@@ -67,24 +67,24 @@ okapi --version
 
 ### 環境ファイルの解決順序
 
-`run` と `env show` は、`--env` を省略すると以下の優先順位で環境ファイルを探す：
+`run` と `env show` は、`--env` を省略すると次の優先順位で環境ファイルを探す。
 
 1. `--env <file>`（明示指定）
 2. `$OKAPI_ENV` 環境変数
 3. `envs/default.yaml`（カレントディレクトリ基準）
 
-普段使う環境を毎回 `--env` で指定しなくていいように、シェルの profile で
-`export OKAPI_ENV=/path/to/envs/sandbox.yaml` するか、`envs/default.yaml` を
-使いたい環境ファイルのコピー（またはシンボリックリンク）にしておく。別の org
-を一時的に叩きたいときだけ `--env` で上書きすればよい。
+普段使う環境はシェルの profile で `export OKAPI_ENV=/path/to/envs/sandbox.yaml`
+を設定するか、`envs/default.yaml` を使いたい環境ファイルのコピーかシンボリック
+リンクにしておけば、毎回 `--env` を指定しなくて済む。別の org を一時的に叩き
+たいときだけ `--env` で上書きすればよい。
 
 ### Okta Management API コレクション
 
-`collections/okta_management/` は Okta が公式に公開している OpenAPI 3 spec
+`collections/okta_management/` は、Okta が公式に公開している OpenAPI 3 spec
 （[okta/okta-management-openapi-spec](https://github.com/okta/okta-management-openapi-spec)）
-から `okapi import openapi --output-dir` で生成した、developer.okta.com の
-API リファレンスと同じ粒度（User / Group / Application 等のタグ単位）に分割
-された全 734 リクエストのコレクション。再生成するには：
+から `okapi import openapi --output-dir` で生成したコレクションである。
+developer.okta.com の API リファレンスと同じ粒度（User / Group / Application
+等のタグ単位）に分割され、全 734 リクエストを含む。再生成する手順は次のとおり。
 
 ```bash
 curl -sL -o /tmp/okta_mgmt.yaml \
@@ -100,8 +100,8 @@ okapi import openapi /tmp/okta_mgmt.yaml --output-dir collections/okta_managemen
 ### headers / query の継承
 
 コレクションのトップレベルにも `headers:` / `query:` を書ける。各リクエストは
-そのキーを継承し、リクエスト側で同名キーを書いた場合はそちらが優先される
-（キー単位のマージなので、他のキーは引き続き継承される）：
+そのキーを継承し、リクエスト側で同名キーを書いた場合はそちらが優先される。
+キー単位のマージなので、他のキーは引き続き継承される。
 
 ```yaml
 name: Okta Users API
@@ -123,14 +123,14 @@ requests:
 ```
 
 `Authorization` のように全リクエスト共通のヘッダーを毎回書かなくて済むので、
-特に自動生成した数百リクエスト規模のコレクションで効果が大きい。
-`collections/okta_management/user.yaml` などが実例。
+自動生成した数百リクエスト規模のコレクションほど効果が大きい。
+`collections/okta_management/user.yaml` が実例にあたる。
 
-body や query を編集したいときにこの共有ファイルを直接触ると他のリクエストにも
-影響するので、その場合は `okapi extract` で継承済みの単独ファイルに書き出してから
-編集するとよい（上記の使い方を参照）。
+共有ファイルを直接編集すると他のリクエストにも影響するため、body や query を
+個別に編集したいときは `okapi extract` で継承済みの単独ファイルに書き出して
+から編集する（上記の使い方を参照）。
 
-実運用のコレクション・環境ファイルは以下に置く想定：
+実運用のコレクション・環境ファイルは次の場所に置く想定である。
 
 - `collections/` — 実際に使うコレクション YAML（git 管理対象）
 - `envs/` — 実際の SSWS トークン等を含む環境 YAML（**git 管理対象外**。`.gitignore` 済み）
@@ -142,12 +142,12 @@ rake test   # spec/**/*_spec.rb を minitest で実行
 ```
 
 `spec/runner_spec.rb` はモックライブラリを使わず、プレーンな `TCPServer` を
-テスト用のフェイク HTTP サーバーとして起動して実リクエストを検証する。
+テスト用のフェイク HTTP サーバーとして起動し、実リクエストを検証する。
 
 ## バージョニング
 
 [Semantic Versioning](https://semver.org/) に従う。現在のバージョンは
-`lib/okapi/version.rb` の `Okapi::VERSION`（`okapi --version` で表示）で、
+`lib/okapi/version.rb` の `Okapi::VERSION`（`okapi --version` で表示）であり、
 リリースごとに同じバージョンで git tag（`vX.Y.Z`）を打つ。変更履歴は
 [CHANGELOG.md](CHANGELOG.md) を参照。
 
